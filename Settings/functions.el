@@ -74,7 +74,7 @@
   (sleep-for 0.5)
   (setq-local git-url "https://github.com/")
   (if (y-or-n-p (concat git-url username "/" reponame))
-      (magit-clone (concat git-url username "/" reponame) default-directory)))  
+      (magit-clone (concat git-url username "/" reponame) (concat default-directory "/" reponame) )))  
 ;; end
 
 ;; smart comment
