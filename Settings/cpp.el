@@ -1,3 +1,4 @@
+;; company / irony mode
 (add-hook 'after-init-hook 'global-company-mode)
 
 (eval-after-load 'company
@@ -8,6 +9,12 @@
 ;;     std::|
 (add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
 
+(add-hook 'c++-mode-hook 'irony-mode)
+(add-hook 'c-mode-hook 'irony-mode)
+(add-hook 'objc-mode-hook 'irony-mode)
+;; end
+
+;; rtags
 (require 'rtags)
 (require 'company-rtags)
 
@@ -20,11 +27,9 @@
 
 (require 'helm-rtags)
 (setq rtags-use-helm t)
+;; rtags
 
-(add-hook 'c++-mode-hook 'irony-mode)
-(add-hook 'c-mode-hook 'irony-mode)
-(add-hook 'objc-mode-hook 'irony-mode)
-
+;; irony again / company irony c headers
 (defun my-irony-mode-hook ()
   (define-key irony-mode-map [remap completion-at-point]
     'irony-completion-at-point-async)
@@ -45,6 +50,13 @@
 
 (add-hook 'c++-mode-hook 'flycheck-mode)
 (add-hook 'c-mode-hook 'flycheck-mode)
+;; end
+
+;; flycheck flyspell
+  (add-hook 'c++-mode-hook
+          (lambda ()
+            (flyspell-prog-mode)))
+
 
 (require 'flycheck-rtags)
 
@@ -57,6 +69,7 @@
 
 (eval-after-load 'flycheck
   '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup))
+;; end
 
 ;; autopair
 (electric-pair-mode t)
@@ -75,4 +88,16 @@
 	    (define-key c++-mode-map "(" 'electric-pair)
 	    (define-key c++-mode-map "[" 'electric-pair)
 	    (define-key c++-mode-map "{" 'electric-pair)))
+;; end
+
+;; yasnippet
+(add-to-list 'load-path
+              "~/.emacs.d/plugins/yasnippet")
+(require 'yasnippet)
+(yas-global-mode 1)
+;; end
+
+;; auto highlighting
+(require 'auto-highlight-symbol)
+(global-auto-highlight-symbol-mode t)
 ;; end
