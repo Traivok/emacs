@@ -129,7 +129,7 @@
 (setq inhibit-startup-message t) ; Disable startup message
 
 ;; load theme
-(load-theme 'twilight t)
+(load-theme 'monokai t)
 
 ;; refresh packages
 ;;(package-refresh-contents)
