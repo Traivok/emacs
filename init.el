@@ -23,7 +23,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (dracula-theme))))
+ '(package-selected-packages
+   (quote
+    (cmake-ide flycheck-rtags flycheck company-irony-c-headers company-c-headers company-irony irony helm-rtags company-rtags company rtags dracula-theme))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
