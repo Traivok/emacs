@@ -12,3 +12,5 @@
 (global-set-key [\C-\S-up] 'move-text-up)
 (global-set-key [\C-\S-down] 'move-text-down)
 ;; end
+
+
