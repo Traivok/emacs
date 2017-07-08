@@ -76,3 +76,8 @@
   (if (y-or-n-p (concat git-url username "/" reponame))
       (magit-clone (concat git-url username "/" reponame) default-directory)))  
 ;; end
+
+;; smart comment
+(add-to-list 'load-path "~/emacs.d")
+(require 'smart-comment)
+;; end

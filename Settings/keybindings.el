@@ -13,4 +13,6 @@
 (global-set-key [\C-\S-down] 'move-text-down)
 ;; end
 
-
+;; smart comment
+(global-set-key (kbd "C-;") 'smart-comment)
+;; end
