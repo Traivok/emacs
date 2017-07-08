@@ -25,7 +25,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (cmake-ide flycheck-rtags flycheck company-irony-c-headers company-c-headers company-irony irony helm-rtags company-rtags company rtags dracula-theme))))
+    (magit suscolors-theme cmake-ide flycheck-rtags flycheck company-irony-c-headers company-c-headers company-irony irony helm-rtags company-rtags company rtags dracula-theme))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -81,4 +81,4 @@
 (setq inhibit-startup-message t) ; Disable startup message
 
 ;; load theme
-(load-theme 'dracula t)
+(load-theme 'suscolors t)

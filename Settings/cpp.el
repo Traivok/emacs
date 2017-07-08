@@ -1,3 +1,5 @@
+(add-hook 'after-init-hook 'global-company-mode)
+
 (require 'rtags)
 (require 'company-rtags)
 
@@ -32,8 +34,6 @@
     'company-backends '(company-irony-c-headers company-irony)))
 
 (setq company-idle-delay 0)
-(define-key c-mode-map [(tab)] 'company-complete)
-(define-key c++-mode-map [(tab)] 'company-complete)
 
 (add-hook 'c++-mode-hook 'flycheck-mode)
 (add-hook 'c-mode-hook 'flycheck-mode)
