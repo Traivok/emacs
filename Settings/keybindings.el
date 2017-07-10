@@ -14,5 +14,5 @@
 ;; end
 
 ;; smart comment
-(global-set-key (kbd "C-;") 'smart-comment)
+(global-set-key (kbd "M-;") 'smart-comment)
 ;; end

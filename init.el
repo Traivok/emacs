@@ -47,7 +47,7 @@
  '(magit-diff-use-overlays nil)
  '(package-selected-packages
    (quote
-    (twilight-anti-bright-theme twilight-bright-theme twilight-theme auto-highlight-symbol flycheck-irony cl-print yasnippet monokai-theme smart-comment magit suscolors-theme cmake-ide flycheck-rtags flycheck company-irony-c-headers company-c-headers company-irony irony helm-rtags company-rtags company rtags dracula-theme)))
+    (smart-tab twilight-anti-bright-theme twilight-bright-theme twilight-theme auto-highlight-symbol flycheck-irony cl-print yasnippet monokai-theme smart-comment magit suscolors-theme cmake-ide flycheck-rtags flycheck company-irony-c-headers company-c-headers company-irony irony helm-rtags company-rtags company rtags dracula-theme)))
  '(pos-tip-background-color "#A6E22E")
  '(pos-tip-foreground-color "#272822")
  '(vc-annotate-background nil)
@@ -122,7 +122,7 @@
 (fringe-mode -1)
 ;; End
 
-;;             Display columns
+;; Display columns
 (setq column-number-mode t)
 
 ;; no startup msg  
@@ -133,3 +133,6 @@
 
 ;; refresh packages
 ;;(package-refresh-contents)
+
+;; clipboard bug
+;(setq x-select-enable-clipboard nil)
