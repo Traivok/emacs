@@ -1,20 +1,7 @@
 ;; company / irony mode
 (add-hook 'after-init-hook 'global-company-mode)
+(global-flycheck-mode)
 
-(eval-after-load 'company
-  '(add-to-list 'company-backends 'company-irony))
-
-;; (optional) adds CC special commands to `company-begin-commands' in order to
-;; trigger completion at interesting places, such as after scope operator
-;;     std::|
-(add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
-
-(add-hook 'c++-mode-hook 'irony-mode)
-(add-hook 'c-mode-hook 'irony-mode)
-(add-hook 'objc-mode-hook 'irony-mode)
-;; end
-
-;; rtags
 (require 'rtags)
 (require 'company-rtags)
 
@@ -25,11 +12,10 @@
 (setq rtags-autostart-diagnostics t)
 (rtags-enable-standard-keybindings)
 
-(require 'helm-rtags)
-(setq rtags-use-helm t)
-;; rtags
+(add-hook 'c++-mode-hook 'irony-mode)
+(add-hook 'c-mode-hook 'irony-mode)
+(add-hook 'objc-mode-hook 'irony-mode)
 
-;; irony again / company irony c headers
 (defun my-irony-mode-hook ()
   (define-key irony-mode-map [remap completion-at-point]
     'irony-completion-at-point-async)
@@ -46,30 +32,18 @@
   '(add-to-list
     'company-backends '(company-irony-c-headers company-irony)))
 
-(setq company-idle-delay 0)
-
 (add-hook 'c++-mode-hook 'flycheck-mode)
 (add-hook 'c-mode-hook 'flycheck-mode)
-;; end
-
-;; flycheck flyspell
-  (add-hook 'c++-mode-hook
-          (lambda ()
-            (flyspell-prog-mode)))
-
-
-(require 'flycheck-rtags)
-
-(defun my-flycheck-rtags-setup ()
-  (flycheck-select-checker 'rtags)
-  (setq-local flycheck-highlighting-mode nil) ;; RTags creates more accurate overlays.
-  (setq-local flycheck-check-syntax-automatically nil))
-;; c-mode-common-hook is also called by c++-mode
-(add-hook 'c-mode-common-hook #'my-flycheck-rtags-setup)
 
 (eval-after-load 'flycheck
-  '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup))
-;; end
+  '(add-hook 'flycheck-mode-hook 'flycheck-irony-setup))
+
+(add-hook 'c++-mode-hook (lambda () (setq flycheck-clang-language-standard "c++14")))
+(add-hook 'c++-mode-hook (lambda () (setq flycheck-gcc-language-standard "c++14")))
+
+(cmake-ide-setup)
+
+(set-variable 'rtags-path '"~/Development/rtags/bin")
 
 ;; autopair
 (electric-pair-mode t)

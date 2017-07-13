@@ -1,18 +1,13 @@
-;; load emacs 24's package system. Add MELPA repository.
+(require 'package) ;; You might already have this line
+(let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
+                    (not (gnutls-available-p))))
+       (url (concat (if no-ssl "http" "https") "://melpa.org/packages/")))
+  (add-to-list 'package-archives (cons "melpa" url) t))
+(when (< emacs-major-version 24)
+  ;; For important compatibility libraries like cl-lib
+  (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
+(package-initialize) ;; You might already have this line
 
-;; Added by Package.el.  This must come before configurations of
-;; installed packages.  Don't delete this line.  If you don't want it,
-;; just comment it out by adding a semicolon to the start of the line.
-;; You may delete these explanatory comments.
-(package-initialize)
-
-(when (>= emacs-major-version 24)
-  (require 'package)
-  (add-to-list
-   'package-archives
-   ;; '("melpa" . "http://stable.melpa.org/packages/") ; many packages won't show if using stable
-   '("melpa" . "http://melpa.milkbox.net/packages/")
-   t))
 
 ;; disable bars
 (menu-bar-mode -1)
@@ -47,7 +42,7 @@
  '(magit-diff-use-overlays nil)
  '(package-selected-packages
    (quote
-    (smart-tab twilight-anti-bright-theme twilight-bright-theme twilight-theme auto-highlight-symbol flycheck-irony cl-print yasnippet monokai-theme smart-comment magit suscolors-theme cmake-ide flycheck-rtags flycheck company-irony-c-headers company-c-headers company-irony irony helm-rtags company-rtags company rtags dracula-theme)))
+    (ahungry-theme smart-tab twilight-anti-bright-theme twilight-bright-theme twilight-theme auto-highlight-symbol flycheck-irony cl-print yasnippet monokai-theme smart-comment magit suscolors-theme cmake-ide flycheck-rtags flycheck company-irony-c-headers company-c-headers company-irony irony helm-rtags company-rtags company rtags dracula-theme)))
  '(pos-tip-background-color "#A6E22E")
  '(pos-tip-foreground-color "#272822")
  '(vc-annotate-background nil)

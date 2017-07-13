@@ -1,11 +1,11 @@
 ;; window resize
-(global-set-key (kbd "C-c w h") 'h-resize)
-(global-set-key (kbd "C-c w v") 'v-resize)
+(global-set-key (kbd "C-c w v") 'h-resize)
+(global-set-key (kbd "C-c w h") 'v-resize)
 ;; end
 
-;; C/C++ completion 
-(define-key c-mode-map [?\M-\r] 'company-complete)
-(define-key c++-mode-map [?\M-\r] 'company-complete)
+;; C/C++ completion
+(require 'cc-mode)
+(define-key c-mode-base-map [?\M-\r] 'company-complete)
 ;; end
 
 ;; Move lines
