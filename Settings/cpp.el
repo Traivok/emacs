@@ -1,4 +1,4 @@
-;; company / irony mode
+;; company / flycheck mode
 (add-hook 'after-init-hook 'global-company-mode)
 (global-flycheck-mode)
 
@@ -32,14 +32,13 @@
   '(add-to-list
     'company-backends '(company-irony-c-headers company-irony)))
 
-(add-hook 'c++-mode-hook 'flycheck-mode)
-(add-hook 'c-mode-hook 'flycheck-mode)
 
-(eval-after-load 'flycheck
-  '(add-hook 'flycheck-mode-hook 'flycheck-irony-setup))
+; Enable C++11 support for gcc
+(setq irony-additional-clang-options '("-std=c++11"))
+(add-hook 'c++-mode-hook (lambda () (setq flycheck-gcc-language-standard "c++11")))
+(add-hook 'c++-mode-hook (lambda () (setq flycheck-clang-language-standard "c++11")))
 
-(add-hook 'c++-mode-hook (lambda () (setq flycheck-clang-language-standard "c++14")))
-(add-hook 'c++-mode-hook (lambda () (setq flycheck-gcc-language-standard "c++14")))
+(add-hook 'flycheck-mode-hook 'flycheck-irony-setup)
 
 (cmake-ide-setup)
 
