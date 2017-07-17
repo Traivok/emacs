@@ -38,43 +38,42 @@
 (delete-selection-mode t)
 
 ;; Enlarge or shrink windows
-(defun v-resize (key)
-  "interactively resize the window"  
+(defun h-resize (key)
+  "interactively resize the window."  
   (interactive "cHit [/] to enlarge/shrink") 
   (cond                                  
    ((eq key (string-to-char "["))                      
     (enlarge-window-horizontally 1)             
-    (call-interactively 'v-resize)) 
+    (call-interactively 'h-resize)) 
    ((eq key (string-to-char "]"))                      
     (enlarge-window-horizontally -1)            
-    (call-interactively 'v-resize)) 
+    (call-interactively 'h-resize)) 
    (t (push key unread-command-events))))
 
-(defun h-resize (key)
-  "interactively resize the window"  
+(defun v-resize (key)
+  "interactively resize the window."  
   (interactive "cHit [/] to enlarge/shrink") 
   (cond                                  
    ((eq key (string-to-char "["))                      
     (enlarge-window 1)             
-    (call-interactively 'h-resize)) 
+    (call-interactively 'v-resize)) 
    ((eq key (string-to-char "]"))                      
     (enlarge-window -1)            
-    (call-interactively 'h-resize)) 
+    (call-interactively 'v-resize)) 
    (t (push key unread-command-events))))
 ;; end
 
 ;; magit clone
 (defun mclone ()
+  "Clone from https://github.com/username/reponame repository to /current/directory/reponame folder."
   (interactive)
-  (setq-local username (read-string "Username: "))
-  (message "Username: %s" username)
-  (sleep-for 0.5)
-  (setq-local reponame (read-string "reponame: "))
-  (message "Repository: %s" reponame)
-  (sleep-for 0.5)
-  (setq-local git-url "https://github.com/")
-  (if (y-or-n-p (concat git-url username "/" reponame))
-      (magit-clone (concat git-url username "/" reponame) (concat default-directory "/" reponame) )))  
+  (let* ((username (read-string "Username: "))
+	(reponame (read-string "Reponame: "))
+	(github-url "https://github.com/")
+	(clone-url (concat github-url username "/" reponame))
+	(clone-dir (concat default-directory reponame)))
+    (if (y-or-n-p clone-url)
+    (magit-clone clone-url clone-dir))))
 ;; end
 
 ;; smart comment

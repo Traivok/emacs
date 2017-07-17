@@ -1,6 +1,6 @@
 ;; window resize
-(global-set-key (kbd "C-c w v") 'h-resize)
-(global-set-key (kbd "C-c w h") 'v-resize)
+(global-set-key (kbd "C-c w v") 'v-resize)
+(global-set-key (kbd "C-c w h") 'h-resize)
 ;; end
 
 ;; C/C++ completion

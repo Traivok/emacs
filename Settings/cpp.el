@@ -34,9 +34,9 @@
 
 
 ; Enable C++11 support for gcc
-(setq irony-additional-clang-options '("-std=c++11"))
-(add-hook 'c++-mode-hook (lambda () (setq flycheck-gcc-language-standard "c++11")))
-(add-hook 'c++-mode-hook (lambda () (setq flycheck-clang-language-standard "c++11")))
+(setq irony-additional-clang-options '("-std=c++14" "-Wall" "-Wextra"))
+(add-hook 'c++-mode-hook (lambda () (setq flycheck-gcc-language-standard "c++14")))
+(add-hook 'c++-mode-hook (lambda () (setq flycheck-clang-language-standard "c++14")))
 
 (add-hook 'flycheck-mode-hook 'flycheck-irony-setup)
 
