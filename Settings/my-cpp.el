@@ -1,3 +1,12 @@
+;;; my-cpp.el --- my cpp setup
+
+;;; Commentary:
+;;; installed:
+;;; irony, company, flycheck, irony-c-header
+;;; yasnipett, electric-pair, cmake-ide
+
+;;; Code:
+
 ;; company / flycheck mode
 (add-hook 'after-init-hook 'global-company-mode)
 (global-flycheck-mode)
@@ -48,7 +57,7 @@
 (electric-pair-mode t)
 (defun electric-pair ()
   "If at end of line, insert character pair without surrounding spaces.
-    Otherwise, just insert the typed character."
+Otherwise, just insert the typed character."
   (interactive)
   (if (eolp) (let (parens-require-spaces) (insert-pair)) (self-insert-command 1)))
 (add-hook 'c-mode-hook 'c++-mode-hook
@@ -74,3 +83,6 @@
 (require 'auto-highlight-symbol)
 (global-auto-highlight-symbol-mode t)
 ;; end
+
+(provide 'my-cpp)
+;;; my-cpp.el ends here

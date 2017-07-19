@@ -1,3 +1,15 @@
+;;; my-functions.el --- my functions
+
+;;; I did not create all the functions
+;;; thanks to google, stacks and so on
+
+;;; Commentary:
+;;; Functions:
+;;; (v/h)-resize, mclone, move-text-(up/down)
+;;; rename-file-and-buffer
+
+;;; Code:
+
 ;; Move lines
 (defun move-text-internal (arg)
    (cond
@@ -76,7 +88,23 @@
     (magit-clone clone-url clone-dir))))
 ;; end
 
-;; smart comment
-(add-to-list 'load-path "~/emacs.d")
-(require 'smart-comment)
-;; end
+;; source: http://steve.yegge.googlepages.com/my-dot-emacs-file
+(defun rename-file-and-buffer (new-name)
+  "Renames both current buffer and file it's visiting to NEW-NAME."
+  (interactive "sNew name: ")
+  (let ((name (buffer-name))
+        (filename (buffer-file-name)))
+    (if (not filename)
+        (message "Buffer '%s' is not visiting a file!" name)
+      (if (get-buffer new-name)
+          (message "A buffer named '%s' already exists!" new-name)
+        (progn
+          (rename-file filename new-name 1)
+          (rename-buffer new-name)
+          (set-visited-file-name new-name)
+          (set-buffer-modified-p nil))))))
+;;end
+
+
+(provide 'my-functions)
+;;; my-functions.el ends here
