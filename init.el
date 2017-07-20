@@ -68,6 +68,8 @@
 
 ;; no startup msg
 (setq inhibit-startup-message t) ; Disable startup message
+;; no scratch msg
+(setq initial-scratch-message "")
 
 ;; load theme
 (load-theme 'monokai t)
