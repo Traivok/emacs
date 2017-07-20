@@ -4,7 +4,7 @@
 ;;; Melpa
 ;;; Load from ~/.emacs.d/Settings/
 ;;; Visual, font and theme configuration and general setups like
-;;; show-paren and smart-comment
+;;; show-paren, smart-comment
 
 ;;; Code:
 
@@ -26,6 +26,11 @@
     (mapc load-it (directory-files dir nil "\\.el$"))))
 (load-directory "~/.emacs.d/Settings/")
 ;; End
+
+;; update
+(when (not package-archive-contents)
+    (package-refresh-contents))
+;; end
 
 ;;            Set backup directory
 (setq backup-directory-alist `(("." . "/home/ricardo/Development/.backup")))
