@@ -19,6 +19,10 @@
 (global-set-key (kbd "C-c y") 'yas-insert-snippet)
 ;; end
 
+;; Irony
+(define-key c-mode-base-map (kbd "C-c t") 'irony-get-type)
+;; end
+
 ;; Magit
 (require 'magit)
 (global-set-key (kbd "C-c s") 'magit-status)
