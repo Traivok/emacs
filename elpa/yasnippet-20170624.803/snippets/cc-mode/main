@@ -2,9 +2,11 @@
 # name: main
 # key: main
 # --
-int main(void) {
+#include <${1:bits/stdc++.h}>
 
-    $0
+int main(${2:void}) {
+  ${3:std::ios::sync_with_stdio(false);}
+  $0  
 
-    return 0;
+  return 0;
 }

@@ -14,13 +14,16 @@
 (require 'rtags)
 (require 'company-rtags)
 
+;; r-tags
 (setq rtags-completions-enabled t)
 (eval-after-load 'company
   '(add-to-list
     'company-backends 'company-rtags))
 (setq rtags-autostart-diagnostics t)
 (rtags-enable-standard-keybindings)
+;; end
 
+;; irony
 (add-hook 'c++-mode-hook 'irony-mode)
 (add-hook 'c-mode-hook 'irony-mode)
 (add-hook 'objc-mode-hook 'irony-mode)
@@ -41,17 +44,22 @@
   '(add-to-list
     'company-backends '(company-irony-c-headers company-irony)))
 
-
 ; Enable C++11 support for gcc
 (setq irony-additional-clang-options '("-std=c++14" "-Wall" "-Wextra"))
 (add-hook 'c++-mode-hook (lambda () (setq flycheck-gcc-language-standard "c++14")))
 (add-hook 'c++-mode-hook (lambda () (setq flycheck-clang-language-standard "c++14")))
 
 (add-hook 'flycheck-mode-hook 'flycheck-irony-setup)
+;; end
 
+;; cmake-ide-setup
 (cmake-ide-setup)
+;; end
 
-(set-variable 'rtags-path '"~/Development/rtags/bin")
+;; rtags-path load if Project directory
+(if (string-prefix-p "~/Development/Projects" default-directory)
+    (set-variable 'rtags-path '"~/Development/rtags/bin"))
+;; end
 
 ;; autopair
 (electric-pair-mode t)
