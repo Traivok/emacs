@@ -2,11 +2,10 @@
 # name: main
 # key: main
 # --
-#include <${1:bits/stdc++.h}>
-
-int main(${2:void}) {
-  ${3:std::ios::sync_with_stdio(false);}
-  $0  
-
+${1:#include <${2:bits/stdc++.h}>
+}$0
+int main(${3:void}) {
+  ${4:std::ios::sync_with_stdio(false);
+  }
   return 0;
 }

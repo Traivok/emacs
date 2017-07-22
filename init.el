@@ -18,6 +18,10 @@
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 (package-initialize) ;; You might already have this line
 
+;; install and update packages
+(require 'my-installed-packages "~/.emacs.d/Settings/my-installed-packages.el")
+;; end
+
 ;;          Load packages and theirs configurations          ;;
 (defun load-directory (dir)
   (let ((load-it (lambda (f)
@@ -26,11 +30,6 @@
     (mapc load-it (directory-files dir nil "\\.el$"))))
 (load-directory "~/.emacs.d/Settings/")
 ;; End
-
-;; update
-(when (not package-archive-contents)
-    (package-refresh-contents))
-;; end
 
 ;;            Set backup directory
 (setq backup-directory-alist `(("." . "/home/ricardo/Development/.backup")))
@@ -95,7 +94,7 @@
  '(compilation-message-face (quote default))
  '(custom-safe-themes
    (quote
-    ("a49760e39bd7d7876c94ee4bf483760e064002830a63e24c2842a536c6a52756" "51e228ffd6c4fff9b5168b31d5927c27734e82ec61f414970fc6bcce23bc140d" default)))
+    ("ff7625ad8aa2615eae96d6b4469fcc7d3d20b2e1ebc63b761a349bebbb9d23cb" "dfe0523e20114df987a41afb6ac5698307e65e0fcb9bff12dc94621e18d44c3d" "a49760e39bd7d7876c94ee4bf483760e064002830a63e24c2842a536c6a52756" "51e228ffd6c4fff9b5168b31d5927c27734e82ec61f414970fc6bcce23bc140d" default)))
  '(fci-rule-color "#3C3D37")
  '(highlight-changes-colors (quote ("#FD5FF0" "#AE81FF")))
  '(highlight-tail-colors
@@ -111,9 +110,10 @@
  '(magit-diff-use-overlays nil)
  '(package-selected-packages
    (quote
-    (twilight-theme cmake-mode yasnippet suscolors-theme smart-comment monokai-theme magit helm-rtags flycheck-rtags flycheck-irony dracula-theme company-rtags company-irony-c-headers company-irony company-c-headers cmake-ide auto-highlight-symbol ahungry-theme)))
+    (cmake-mode yasnippet smart-comment monokai-theme magit flycheck-rtags flycheck-irony company-rtags company-irony-c-headers company-irony company-c-headers cmake-ide auto-highlight-symbol)))
  '(pos-tip-background-color "#A6E22E")
  '(pos-tip-foreground-color "#272822")
+ '(red "#ffffff")
  '(vc-annotate-background nil)
  '(vc-annotate-color-map
    (quote
