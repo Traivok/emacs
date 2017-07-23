@@ -1,6 +1,6 @@
 ;;; my-functions.el --- my functions
 
-;;; I did not create all the functions
+;;; I did not create all these functions
 ;;; thanks to google, stacks and so on
 
 ;;; Commentary:
@@ -12,8 +12,8 @@
 
 ;; Move lines
 (defun move-text-internal (arg)
-   (cond
-    ((and mark-active transient-mark-mode)
+  "If (ARG) up, move the line up, elif (ARG) down, move the line down."
+  (cond  ((and mark-active transient-mark-mode)
      (if (> (point) (mark))
             (exchange-point-and-mark))
      (let ((column (current-column))
@@ -49,27 +49,27 @@
 
 ;; Enlarge or shrink windows
 (defun h-resize (key)
-  "Interactively resize the window." 
-  (interactive "cHit [/] to enlarge/shrink") 
-  (cond                                  
-   ((eq key (string-to-char "["))                      
-    (enlarge-window-horizontally 1)             
-    (call-interactively 'h-resize)) 
-   ((eq key (string-to-char "]"))                      
-    (enlarge-window-horizontally -1)            
-    (call-interactively 'h-resize)) 
+  "Interactively resize the window horizontally (KEY) ] to enlarge and [ to shrink."
+  (interactive "cHit [/] to enlarge/shrink")
+  (cond
+   ((eq key (string-to-char "["))
+    (enlarge-window-horizontally 1)
+    (call-interactively 'h-resize))
+   ((eq key (string-to-char "]"))
+    (enlarge-window-horizontally -1)
+    (call-interactively 'h-resize))
    (t (push key unread-command-events))))
 
 (defun v-resize (key)
-  "interactively resize the window."  
-  (interactive "cHit [/] to enlarge/shrink") 
-  (cond                                  
-   ((eq key (string-to-char "["))                      
-    (enlarge-window 1)             
-    (call-interactively 'v-resize)) 
-   ((eq key (string-to-char "]"))                      
-    (enlarge-window -1)            
-    (call-interactively 'v-resize)) 
+  "Interactively resize the window vertically (KEY) ] to enlarge and [ to shrink."
+  (interactive "cHit [/] to enlarge/shrink")
+  (cond
+   ((eq key (string-to-char "["))
+    (enlarge-window 1)
+    (call-interactively 'v-resize))
+   ((eq key (string-to-char "]"))
+    (enlarge-window -1)
+    (call-interactively 'v-resize))
    (t (push key unread-command-events))))
 ;; end
 
@@ -89,7 +89,7 @@
 ;; source: http://steve.yegge.googlepages.com/my-dot-emacs-file
 (defun rename-file-and-buffer (new-name)
   "Renames both current buffer and file it's visiting to NEW-NAME."
-  (interactive "sNew name: ")
+  (interactive "New name: ")
   (let ((name (buffer-name))
         (filename (buffer-file-name)))
     (if (not filename)
