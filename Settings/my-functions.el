@@ -6,7 +6,7 @@
 ;;; Commentary:
 ;;; Functions:
 ;;; (v/h)-resize, mclone, move-text-(up/down)
-;;; rename-file-and-buffer, find init file and settings path
+;;; rename-file-and-buffer, goto init file and settings directory
 
 ;;; Code:
 

@@ -24,6 +24,7 @@
 
 ;;          Load packages and theirs configurations          ;;
 (defun load-directory (dir)
+  "Load all *.el files at (DIR)."
   (let ((load-it (lambda (f)
 		   (load-file (concat (file-name-as-directory dir) f)))
 		 ))
