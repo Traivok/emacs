@@ -6,7 +6,7 @@
 ;;; Commentary:
 ;;; Functions:
 ;;; (v/h)-resize, mclone, move-text-(up/down)
-;;; rename-file-and-buffer
+;;; rename-file-and-buffer, find init file and settings path
 
 ;;; Code:
 
@@ -103,6 +103,17 @@
           (set-buffer-modified-p nil))))))
 ;;end
 
+;; Go to .emacs init and setup dir.
+(defun goto-init-file ()
+  "Go to init.el file."
+  (interactive)
+  (find-file-existing "~/.emacs.d/init.el"))
+
+(defun goto-setup-dir ()
+  "Go to Settings/ file."
+  (interactive)
+  (find-file-existing "~/.emacs.d/Settings/"))
+;; end
 
 (provide 'my-functions)
 ;;; my-functions.el ends here
