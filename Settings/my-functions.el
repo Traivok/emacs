@@ -7,6 +7,7 @@
 ;;; Functions:
 ;;; (v/h)-resize, mclone, move-text-(up/down)
 ;;; rename-file-and-buffer, goto init file and settings directory
+;;; open-shell in new window
 
 ;;; Code:
 
@@ -113,6 +114,14 @@
   "Go to Settings/ file."
   (interactive)
   (find-file-existing "~/.emacs.d/Settings/"))
+;; end
+
+;; open shell in a new window
+(defun shell-other-window ()
+  "Open a `shell' in a new window."
+  (interactive)
+  (let ((buf (shell))))
+  (delete-other-windows))
 ;; end
 
 (provide 'my-functions)

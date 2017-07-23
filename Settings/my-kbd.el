@@ -26,7 +26,7 @@
 ;; Goto setup files and folders
 (require 'my-functions "~/.emacs.d/Settings/my-functions.el")
 (global-set-key (kbd "C-c i f") 'goto-init-file)
-(global-set-key (kbd "C-c i s") 'goto-setup-dir)
+(global-set-key (kbd "C-c i d") 'goto-setup-dir)
 ;; end
 
 ;; Magit
@@ -48,6 +48,9 @@
 ;; smart comment
 (global-set-key (kbd "M-;") 'smart-comment)
 ;; end
+
+;; open shell
+(global-set-key (kbd "C-c i s") 'shell)
 
 (provide 'my-kbd)
 ;;; my-kbd.el ends here
