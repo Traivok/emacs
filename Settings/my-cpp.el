@@ -46,21 +46,18 @@
 
 ; Enable C++11 support for gcc
 (setq irony-additional-clang-options '("-std=c++14" "-Wall" "-Wextra"))
-(add-hook 'c++-mode-hook (lambda () (setq flycheck-gcc-language-standard "c++14")))
-(add-hook 'c++-mode-hook (lambda () (setq flycheck-clang-language-standard "c++14")))
+(add-hook 'c++-mode-hook (lambda () (defvar flycheck-gcc-language-standard "c++14" "Set GCC standart to C++14")))
+(add-hook 'c++-mode-hook (lambda () (defvar flycheck-clang-language-standard "c++14" "Set Clang standart to C++14")))
 
 (add-hook 'flycheck-mode-hook 'flycheck-irony-setup)
-;; end
-
-;; cmake-ide-setup
-(cmake-ide-setup)
 ;; end
 
 ;; rtags-path load if the file is a project file
 (add-hook 'c++-mode-hook (lambda ()
 			   (let ((compile-cmds "compile_commands.json"))
-			     (if (file-exists-p (concat default-directory compile-cmds))
-				 (set-variable 'rtags-path "~/Development/rtags/bin")))))
+			     (when (file-exists-p (concat default-directory compile-cmds))
+			       (set-variable 'rtags-path "~/Development/rtags/bin")
+			       (cmake-ide-setup)))))
 ;; end
 
 ;; autopair

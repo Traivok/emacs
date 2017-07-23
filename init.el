@@ -115,6 +115,7 @@
  '(pos-tip-background-color "#A6E22E")
  '(pos-tip-foreground-color "#272822")
  '(red "#ffffff")
+ '(send-mail-function (quote mailclient-send-it))
  '(vc-annotate-background nil)
  '(vc-annotate-color-map
    (quote
