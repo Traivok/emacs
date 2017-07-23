@@ -33,14 +33,12 @@
        (forward-line -1)))))
 
 (defun move-text-down (arg)
-   "Move region (transient-mark-mode active) or current line
-  arg lines down."
+   "Move region (ARG) or current line arg lines down."
    (interactive "*p")
    (move-text-internal arg))
 
 (defun move-text-up (arg)
-   "Move region (transient-mark-mode active) or current line
-  arg lines up."
+   "Move region (ARG) or current line  arg lines up."
    (interactive "*p")
    (move-text-internal (- arg)))
 ;; End
@@ -51,7 +49,7 @@
 
 ;; Enlarge or shrink windows
 (defun h-resize (key)
-  "interactively resize the window."  
+  "Interactively resize the window." 
   (interactive "cHit [/] to enlarge/shrink") 
   (cond                                  
    ((eq key (string-to-char "["))                      

@@ -56,9 +56,11 @@
 (cmake-ide-setup)
 ;; end
 
-;; rtags-path load if Project directory
-(if (string-prefix-p "~/Development/Projects" default-directory)
-    (set-variable 'rtags-path '"~/Development/rtags/bin"))
+;; rtags-path load if the file is a project file
+(add-hook 'c++-mode-hook (lambda ()
+			   (let ((compile-cmds "compile_commands.json"))
+			     (if (file-exists-p (concat default-directory compile-cmds))
+				 (set-variable 'rtags-path "~/Development/rtags/bin")))))
 ;; end
 
 ;; autopair
