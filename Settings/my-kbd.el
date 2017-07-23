@@ -50,7 +50,7 @@
 ;; end
 
 ;; open shell
-(global-set-key (kbd "C-c i s") 'shell)
+(global-set-key (kbd "C-c i s") 'shell-other-window)
 
 (provide 'my-kbd)
 ;;; my-kbd.el ends here
