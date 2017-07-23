@@ -17,7 +17,6 @@
 (setq ido-file-extensions-order '(".hpp" ".cpp" ".c" ".el"))
 
 (ido-mode t)
-
 ;; end
 
 (provide 'Misc)
