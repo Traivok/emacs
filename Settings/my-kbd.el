@@ -4,7 +4,7 @@
 ;;; Binding:
 ;;; (v/h)-resize, company-complete, yas-insert-snippet,
 ;;; move lines, eval-(region/buffer), move-text-(up/down)
-;;; smart-comment, magi
+;;; smart-comment, magit, goto setups files/folder
 
 ;;; Code:
 
@@ -21,6 +21,12 @@
 
 ;; Irony
 (define-key c-mode-base-map (kbd "C-c t") 'irony-get-type)
+;; end
+
+;; Goto setup files and folders
+(require 'my-functions "~/.emacs.d/Settings/my-functions.el")
+(global-set-key (kbd "C-c i f") 'goto-init-file)
+(global-set-key (kbd "C-c i s") 'goto-setup-dir)
 ;; end
 
 ;; Magit
