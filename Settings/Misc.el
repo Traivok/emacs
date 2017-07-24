@@ -27,7 +27,6 @@
 (add-hook 'view-mode-hook 'turn-on-tempbuf-mode)
 (add-hook 'after-change-major-mode-hook 'turn-on-tempbuf-mode)
 (add-hook 'find-file-hooks 'turn-on-tempbuf-mode)
-(add-hook 'tempbuf-expire-hook (lambda () (kill-match-buffer-y "magit"))) ;; kils magit instances
 ;; end
 
 (provide 'Misc)
