@@ -19,5 +19,12 @@
 (ido-mode t)
 ;; end
 
+(require 'tempbuf "~/.emacs.d/Settings/tempbuf.el")
+(add-hook 'custom-mode-hook 'turn-on-tempbuf-mode)
+(add-hook 'w3-mode-hook 'turn-on-tempbuf-mode)
+(add-hook 'Man-mode-hook 'turn-on-tempbuf-mode)
+(add-hook 'view-mode-hook 'turn-on-tempbuf-mode)
+(add-hook 'after-change-major-mode-hook 'turn-on-tempbuf-mode)
+
 (provide 'Misc)
 ;;; Misc.el ends here
