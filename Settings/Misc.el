@@ -27,6 +27,18 @@
 (add-hook 'view-mode-hook 'turn-on-tempbuf-mode)
 (add-hook 'after-change-major-mode-hook 'turn-on-tempbuf-mode)
 (add-hook 'find-file-hooks 'turn-on-tempbuf-mode)
+
+(defun my-term-on-tempbuf-expire ()
+  "Killing idle terminal."
+  (when (get-buffer-process (current-buffer))
+    (term-send-eof)))
+
+(defun my-term-mode-patch ()
+  "Turning tempbuf on."
+  (turn-on-tempbuf-mode)
+  (add-hook 'tempbuf-expire-hook 'my-term-on-tempbuf-expire
+	    nil t))
+(add-hook 'term-mode-hook 'my-term-mode-patch)
 ;; end
 
 (provide 'Misc)
