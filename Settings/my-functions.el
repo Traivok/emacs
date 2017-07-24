@@ -124,5 +124,14 @@
   (delete-other-windows))
 ;; end
 
+;; kill buffer matching with regexp string without ask
+(defun kill-match-buffer-y (regexp)
+  "Kill buffer that its name match with REGEXP."
+  (interactive "sKill buffers matching with this regexp WITHOUT asking: ")
+  (dolist (bf (buffer-list))
+    (if (string-match-p bf regexp)
+	(kill-buffer bf))))
+
+
 (provide 'my-functions)
 ;;; my-functions.el ends here
