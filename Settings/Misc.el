@@ -4,10 +4,10 @@
 
 ;;; Code:
 
+;; midnight mode, for killing unused buffer
 (require 'midnight)
+(require 'my-functions "~/.emacs.d/Settings/my-functions.el")
 (setq midnight-period (* 2 60 60))
-
-(add-to-list 'clean-buffer-list-kill-regexps '("magit"))
 
 ;; ido
 (require 'ido)
@@ -19,13 +19,15 @@
 (ido-mode t)
 ;; end
 
-;; tempbuf
+;; kill unused buffer
 (require 'tempbuf "~/.emacs.d/Settings/tempbuf.el")
 (add-hook 'custom-mode-hook 'turn-on-tempbuf-mode)
 (add-hook 'w3-mode-hook 'turn-on-tempbuf-mode)
 (add-hook 'Man-mode-hook 'turn-on-tempbuf-mode)
 (add-hook 'view-mode-hook 'turn-on-tempbuf-mode)
 (add-hook 'after-change-major-mode-hook 'turn-on-tempbuf-mode)
+(add-hook 'find-file-hooks 'turn-on-tempbuf-mode)
+(add-hook 'tempbuf-expire-hook (lambda () (kill-match-buffer-y "magit"))) ;; kils magit instances
 ;; end
 
 (provide 'Misc)
