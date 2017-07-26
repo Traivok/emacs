@@ -19,6 +19,25 @@
 (ido-mode t)
 ;; end
 
+;; mpsyt
+(defun open-mpsyt (&optional wsearch)
+  "Opens mpsyt in shell and search for &WSEARCH."
+  (interactive)
+  (let ((mpsyt-cmd (if wsearch (concat "mpsyt /" wsearch) "mpsyt")))
+    (shell-other-window)
+    (rename-buffer "Mpsyt")
+    (insert mpsyt-cmd)
+    (comint-send-input nil t)))
+
+(defun open-cmus ()
+  "Opens cmus."
+  (interactive)
+  (shell-other-window)
+  (rename-buffer "Cmus")
+  (insert "cmus")
+  (comint-send-input nil t))
+;; end
+  
 ;; kill unused buffer
 (require 'tempbuf "~/.emacs.d/Settings/tempbuf.el")
 (add-hook 'custom-mode-hook 'turn-on-tempbuf-mode)
@@ -31,7 +50,7 @@
 (defun my-term-on-tempbuf-expire ()
   "Killing idle terminal."
   (when (get-buffer-process (current-buffer))
-    (term-send-eof)))
+    (comint-send-eof)))
 
 (defun my-term-mode-patch ()
   "Turning tempbuf on."

@@ -111,7 +111,7 @@
  '(magit-diff-use-overlays nil)
  '(package-selected-packages
    (quote
-    (tempbuf my-package cmake-mode yasnippet smart-comment monokai-theme magit flycheck-rtags flycheck-irony company-rtags company-irony-c-headers company-irony company-c-headers cmake-ide auto-highlight-symbol)))
+    (org-mode tempbuf my-package cmake-mode yasnippet smart-comment monokai-theme magit flycheck-rtags flycheck-irony company-rtags company-irony-c-headers company-irony company-c-headers cmake-ide auto-highlight-symbol)))
  '(pos-tip-background-color "#A6E22E")
  '(pos-tip-foreground-color "#272822")
  '(red "#ffffff")

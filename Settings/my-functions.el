@@ -122,6 +122,11 @@
   (interactive)
   (let ((buf (shell))))
   (delete-other-windows))
+(defun eshell-other-window ()
+  "Open a `eshell' in a new window."
+  (interactive)
+  (let ((buf (eshell))))
+  (delete-other-windows))
 ;; end
 
 ;; kill buffer matching with regexp string without ask

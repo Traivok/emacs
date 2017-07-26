@@ -51,6 +51,11 @@
 
 ;; open shell
 (global-set-key (kbd "C-c i s") 'shell-other-window)
+(global-set-key (kbd "C-c i e") 'eshell-other-window)
+
+;; org
+(global-set-key "\C-cl" 'org-store-link)
+(global-set-key "\C-ca" 'org-agenda)
 
 (provide 'my-kbd)
 ;;; my-kbd.el ends here
