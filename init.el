@@ -72,7 +72,7 @@
 (setq initial-scratch-message "")
 
 ;; load theme
-(load-theme 'material t)
+(load-theme 'monokai t)
 
 ;; refresh packages
 ;;(package-refresh-contents)
@@ -85,6 +85,69 @@
 (require 'smart-comment)
 ;; end
 
-
 (provide 'init)
 ;;; init.el ends here
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(ansi-color-faces-vector
+   [default bold shadow italic underline bold bold-italic bold])
+ '(ansi-color-names-vector
+   (vector "#ffffff" "#f36c60" "#8bc34a" "#fff59d" "#4dd0e1" "#b39ddb" "#81d4fa" "#263238"))
+ '(custom-safe-themes
+   (quote
+    ("a49760e39bd7d7876c94ee4bf483760e064002830a63e24c2842a536c6a52756" "fad38808e844f1423c68a1888db75adf6586390f5295a03823fa1f4959046f81" default)))
+ '(ensime-sem-high-faces
+   (quote
+    ((var :foreground "#9876aa" :underline
+	  (:style wave :color "yellow"))
+     (val :foreground "#9876aa")
+     (varField :slant italic)
+     (valField :foreground "#9876aa" :slant italic)
+     (functionCall :foreground "#a9b7c6")
+     (implicitConversion :underline
+			 (:color "#808080"))
+     (implicitParams :underline
+		     (:color "#808080"))
+     (operator :foreground "#cc7832")
+     (param :foreground "#a9b7c6")
+     (class :foreground "#4e807d")
+     (trait :foreground "#4e807d" :slant italic)
+     (object :foreground "#6897bb" :slant italic)
+     (package :foreground "#cc7832")
+     (deprecated :strike-through "#a9b7c6"))))
+ '(fci-rule-color "#37474f")
+ '(hl-sexp-background-color "#1c1f26")
+ '(package-selected-packages
+   (quote
+    (darcula-theme yasnippet smart-comment popup monokai-theme material-theme magit flycheck-rtags flycheck-irony company-rtags company-irony-c-headers company-irony company-c-headers cmake-mode cmake-ide auto-highlight-symbol)))
+ '(vc-annotate-background nil)
+ '(vc-annotate-color-map
+   (quote
+    ((20 . "#f36c60")
+     (40 . "#ff9800")
+     (60 . "#fff59d")
+     (80 . "#8bc34a")
+     (100 . "#81d4fa")
+     (120 . "#4dd0e1")
+     (140 . "#b39ddb")
+     (160 . "#f36c60")
+     (180 . "#ff9800")
+     (200 . "#fff59d")
+     (220 . "#8bc34a")
+     (240 . "#81d4fa")
+     (260 . "#4dd0e1")
+     (280 . "#b39ddb")
+     (300 . "#f36c60")
+     (320 . "#ff9800")
+     (340 . "#fff59d")
+     (360 . "#8bc34a"))))
+ '(vc-annotate-very-old-color nil))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

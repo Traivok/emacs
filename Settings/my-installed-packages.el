@@ -8,7 +8,7 @@
 
 (setq my-package-list '(auto-highlight-symbol cmake-ide cmake-mode company-c-headers irony company-irony company-irony-c-headers
 					      rtags company-rtags flycheck-irony flycheck-rtags magit monokai-theme smart-comment yasnippet
-					      midnight ido org material-theme))
+					      midnight ido org darcula-theme))
 
 ;; update database
 (unless package-archive-contents (package-refresh-contents))

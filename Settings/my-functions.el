@@ -120,12 +120,17 @@
 (defun shell-other-window ()
   "Open a `shell' in a new window."
   (interactive)
-  (let ((buf (shell))))
-  (delete-other-windows))
+  (wterm-other-window 'shell))
+
 (defun eshell-other-window ()
-  "Open a `eshell' in a new window."
+  "Open a 'eshell' instance in a new window."
   (interactive)
-  (let ((buf (eshell))))
+  (wterm-other-window 'eshell))
+
+(defun wterm-other-window (wterm)
+  "Open some (what term) WTERM in a new window."
+  (interactive)
+  (let ((buf (funcall wterm))))
   (delete-other-windows))
 ;; end
 
