@@ -24,7 +24,7 @@
   "Opens mpsyt in shell and search for &WSEARCH."
   (interactive)
   (let ((mpsyt-cmd (if wsearch (concat "mpsyt /" wsearch) "mpsyt")))
-    (shell-other-window)
+    (wterm-other-window 'shell)
     (rename-buffer "Mpsyt")
     (insert mpsyt-cmd)
     (comint-send-input nil t)))
