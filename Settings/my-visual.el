@@ -6,12 +6,13 @@
 ;;; Code:
 
 (require 'the-cycle "~/.emacs.d/Settings/TheCycle/the-cycle.el")
+(require 'rainbow-delimiters)
+(require 'powerline)
 
 ;; set Terminus font
 (set-frame-font "xos4 Terminus 12")
 
 ;; theme
-(require 'powerline)
 (powerline-center-theme)
 (load-theme 'gruvbox-dark-medium t)
 
@@ -40,7 +41,7 @@
 ;; Add highlight matching parenthesis
 (show-paren-mode 1)
 
-
+(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
 (provide 'my-visual)
 ;;; my-visual.el ends here
