@@ -143,5 +143,12 @@
       (if (string-match-p regexp bf-name)
 	  (kill-buffer bf)))))
 
+;; disable all themes
+(defun disable-all-themes ()
+  "Disable all themes."
+  (interactive)
+  (dolist (cur-theme custom-enabled-themes)
+    (disable-theme cur-theme)))
+
 (provide 'my-functions)
 ;;; my-functions.el ends here

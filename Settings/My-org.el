@@ -20,7 +20,7 @@ If N-NOT-DONE = 0, then done, else todo."
 (org-ac/config-default)
 
 (setq  org-hide-leading-stars t)
-(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+;;(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))) find at init.el
 
 ;; more exports options
 (require 'ox-md)
