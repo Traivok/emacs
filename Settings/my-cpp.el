@@ -76,7 +76,8 @@ Otherwise, just insert the typed character."
 	    (define-key c++-mode-map "\"" 'electric-pair)
 	    (define-key c++-mode-map "(" 'electric-pair)
 	    (define-key c++-mode-map "[" 'electric-pair)
-	    (define-key c++-mode-map "{" 'electric-pair)))
+	    (define-key c++-mode-map "{" 'electric-pair)
+	    (define-key c++-mode-map "<" 'electric-pair)))
 ;; end
 
 ;; yasnippet

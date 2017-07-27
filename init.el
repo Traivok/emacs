@@ -69,7 +69,7 @@
 ;; no startup msg
 (setq inhibit-startup-message t) ; Disable startup message
 ;; no scratch msg
-(setq initial-scratch-message "")
+(setq initial-scratch-message ";;;  Evenings, Mornings, And a Couple of Saturdays  ;;;\n\n")
 
 ;; load theme
 (load-theme 'monokai t)
@@ -120,9 +120,10 @@
      (deprecated :strike-through "#a9b7c6"))))
  '(fci-rule-color "#37474f")
  '(hl-sexp-background-color "#1c1f26")
+ '(org-agenda-files nil)
  '(package-selected-packages
    (quote
-    (darcula-theme yasnippet smart-comment popup monokai-theme material-theme magit flycheck-rtags flycheck-irony company-rtags company-irony-c-headers company-irony company-c-headers cmake-mode cmake-ide auto-highlight-symbol)))
+    (minted org-bullets org-bullet org-ac darcula-theme yasnippet smart-comment popup monokai-theme material-theme magit flycheck-rtags flycheck-irony company-rtags company-irony-c-headers company-irony company-c-headers cmake-mode cmake-ide auto-highlight-symbol)))
  '(vc-annotate-background nil)
  '(vc-annotate-color-map
    (quote
