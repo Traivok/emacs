@@ -5,16 +5,16 @@
 
 ;;; Code:
 
-;; (require 'the-cycle "~/.emacs.d/Settings/TheCycle/the-cycle.el")
 (require 'rainbow-delimiters)
 (require 'powerline)
+(require 'theme-cycle "~/.emacs.d/Settings/Theme-Cycle/theme-cycle.el")
 
-;; (thecycle-add-theme-to-list dark-theme-list 'gruvbox-dark-soft)
-;; (thecycle-add-theme-to-list dark-theme-list 'gruvbox-dark-medium)
-;; (thecycle-add-theme-to-list dark-theme-list 'gruvbox-dark-hard)
-;; (thecycle-add-theme-to-list light-theme-list 'gruvbox-light-soft)
-;; (thecycle-add-theme-to-list light-theme-list 'gruvbox-light-medium)
-;; (thecycle-add-theme-to-list light-theme-list 'gruvbox-light-hard)
+(theme-cycle-add-theme-to-group 'dark-theme-group 'gruvbox-dark-soft)
+(theme-cycle-add-theme-to-group 'dark-theme-group 'gruvbox-dark-medium)
+(theme-cycle-add-theme-to-group 'dark-theme-group 'gruvbox-dark-hard)
+(theme-cycle-add-theme-to-group 'light-theme-group 'gruvbox-light-soft)
+(theme-cycle-add-theme-to-group 'light-theme-group 'gruvbox-light-medium)
+(theme-cycle-add-theme-to-group 'light-theme-group 'gruvbox-light-hard)
 
 ;; set Terminus font
 (set-frame-font "xos4 Terminus 12")
