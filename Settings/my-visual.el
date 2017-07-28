@@ -9,6 +9,13 @@
 (require 'rainbow-delimiters)
 (require 'powerline)
 
+;; (thecycle-add-theme-to-list dark-theme-list 'gruvbox-dark-soft)
+;; (thecycle-add-theme-to-list dark-theme-list 'gruvbox-dark-medium)
+;; (thecycle-add-theme-to-list dark-theme-list 'gruvbox-dark-hard)
+;; (thecycle-add-theme-to-list light-theme-list 'gruvbox-light-soft)
+;; (thecycle-add-theme-to-list light-theme-list 'gruvbox-light-medium)
+;; (thecycle-add-theme-to-list light-theme-list 'gruvbox-light-hard)
+
 ;; set Terminus font
 (set-frame-font "xos4 Terminus 12")
 
