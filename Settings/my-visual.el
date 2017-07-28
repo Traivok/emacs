@@ -5,7 +5,7 @@
 
 ;;; Code:
 
-(require 'the-cycle "~/.emacs.d/Settings/TheCycle/the-cycle.el")
+;; (require 'the-cycle "~/.emacs.d/Settings/TheCycle/the-cycle.el")
 (require 'rainbow-delimiters)
 (require 'powerline)
 
