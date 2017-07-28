@@ -44,23 +44,29 @@
    ((eq key ?s) 4)
    (t nil)))
 
+(defun thecycle-get-new-element (your-list element direction up down) ;; improve this function
+  "Return a element based on YOUR-LIST, ELEMENT, DIRECTION, UP and DOWN."
+  (let*
+      ((len (length your-list))
+       (pos (cl-position element your-list :test 'equal))
+       (inc (cond
+	     ((= direction up) 1)
+	     ((= direction down) -1)
+	     (t 0)))
+       (new-pos (cond
+		 ((< (+ inc pos) 0) (- len 1))
+		 (t (% (+ inc pos) len )))))
+    (nth new-pos your-list)))
+
 (defun thecycle-switch-between-lists (themes direction)
-  "Switch between elements of THEMES and DIRECTION rules the switching directionection.")
+  "Switch between elements of THEMES and DIRECTION rules the switching directionection."
+  )
 
 (defun thecycle-switch-between-themes (themes direction)
   "Switch between elements of THEMES and DIRECTION rules the switching directionection."
-  (let*
-    ((len (length themes))
-     (pos (cl-position custom-enabled-themes themes :test 'equal))
-     (inc (cond
-	   ((= direction 1) 1)
-	   ((= direction 2) -1)
-	   (t 0)))
-     (new-pos (cond
-	       ((< (+ inc pos) 0) (- len 1))
-	       (t (% (+ inc pos) len )))))
+  (let ((new-theme (thecycle-get-new-element themes custom-enabled-themes direction 1 2)))
     (disable-all-themes)
-    (dolist (cur-theme (nth new-pos themes))
+    (dolist (cur-theme new-theme)
       (load-theme cur-theme t)
       (message "Loading: %s theme" cur-theme)
       (sleep-for 0.5))))
