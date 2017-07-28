@@ -1,0 +1,3 @@
+[submodule "Settings/Theme-Cycle"]
+	path = Settings/Theme-Cycle
+	url = https://github.com/Traivok/emacs-theme-cycle
