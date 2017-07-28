@@ -7,6 +7,8 @@
 
 (require 'rainbow-delimiters)
 (require 'powerline)
+
+(package-install-file "~/.emacs.d/Settings/Theme-Cycle/theme-cycle.el")
 (require 'theme-cycle "~/.emacs.d/Settings/Theme-Cycle/theme-cycle.el")
 
 (theme-cycle-add-theme-to-group 'dark-theme-group 'gruvbox-dark-soft)
