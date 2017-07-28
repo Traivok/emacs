@@ -1,4 +1,4 @@
-;;; the-cycle.el --- Theme Cycle
+;;; theme-cycle.el --- Theme Cycle
 
 ;;; Autor: José Ricardo Alves Figueirôa
 
@@ -23,21 +23,21 @@
 
 (setq theme-pattern-list nil)
 
-(defun thecycle-add-theme-to-list (your-list value)
+(defun theme-cycle-add-theme-to-list (your-list value)
   "Add to YOUR-LIST a VALUE."
   (delete (symbol-value your-list) theme-pattern-list)
   (add-to-list your-list (list value))
   (add-to-list 'theme-pattern-list  (symbol-value your-list))
   )
 
-(thecycle-add-theme-to-list 'light-theme-list 'gruvbox-light-soft)
-(thecycle-add-theme-to-list 'light-theme-list 'gruvbox-light-medium)
-(thecycle-add-theme-to-list 'light-theme-list 'gruvbox-light-hard)
-(thecycle-add-theme-to-list 'dark-theme-list 'gruvbox-dark-soft)
-(thecycle-add-theme-to-list 'dark-theme-list 'gruvbox-dark-medium)
-(thecycle-add-theme-to-list 'dark-theme-list 'gruvbox-dark-hard)
+(theme-cycle-add-theme-to-list 'light-theme-list 'gruvbox-light-soft)
+(theme-cycle-add-theme-to-list 'light-theme-list 'gruvbox-light-medium)
+(theme-cycle-add-theme-to-list 'light-theme-list 'gruvbox-light-hard)
+(theme-cycle-add-theme-to-list 'dark-theme-list 'gruvbox-dark-soft)
+(theme-cycle-add-theme-to-list 'dark-theme-list 'gruvbox-dark-medium)
+(theme-cycle-add-theme-to-list 'dark-theme-list 'gruvbox-dark-hard)
 
-(defun thecycle-direction-from-key (key)
+(defun theme-cycle-direction-from-key (key)
   "Return directionection based on KEY value."
   (cond
    ((eq key ?a) 1)
@@ -46,7 +46,7 @@
    ((eq key ?s) 4)
    (t nil)))
 
-(defun thecycle-get-new-element (your-list element direction up down) ;; improve this function
+(defun theme-cycle-get-new-element (your-list element direction up down) ;; improve this function
   "Return a element based on YOUR-LIST, ELEMENT, DIRECTION, UP and DOWN."
   (let*
       ((len (length your-list))
@@ -60,7 +60,7 @@
 		 (t (% (+ inc pos) len )))))
     (nth new-pos your-list)))
 
-(defun thecycle-find-in-patterns (search-for)
+(defun theme-cycle-find-in-patterns (search-for)
   "SEARCH-FOR a theme and return in what list it's."
   (message "\n\nGet called for: %s" search-for)
 
@@ -71,40 +71,39 @@
       (setq-local out-ret theme-group))))
     out-ret))
 
-(defun thecycle-switch-between-lists (themes direction)
+(defun theme-cycle-switch-between-lists (themes direction)
   "Switch between THEMES and DIRECTION rules the switching directionection."
-  (let ((cur-list (thecycle-find-in-patterns custom-enabled-themes)))))
+  (let ((cur-list (theme-cycle-find-in-patterns custom-enabled-themes)))))
 
-(defun thecycle-switch-between-themes (themes direction)
+(defun theme-cycle-switch-between-themes (themes direction)
   "Switch between elements of THEMES and DIRECTION rules the switching directionection."
-  (let ((new-theme (thecycle-get-new-element themes custom-enabled-themes direction 1 2)))
+  (let ((new-theme (theme-cycle-get-new-element themes custom-enabled-themes direction 1 2)))
     (disable-all-themes)
     (dolist (cur-theme new-theme)
       (load-theme cur-theme t)
-      (message "Loading: %s theme" cur-theme)
-      (sleep-for 0.5))))
+      (message "Loading: %s theme." cur-theme))))
 
 ;; begin function
-(defun thecycle-switch-theme (key)
+(defun theme-cycle-switch-theme (key)
   "Switch themes KEY W and S will switch between dark and light.
 KEY A and D will be switch between soft, medium, and hard, if its provided."
   (interactive "cHit wasd: ")
   ;; get the directionection
-  (let ((direction (thecycle-direction-from-key key)))
+  (let ((direction (theme-cycle-direction-from-key key)))
     (cond
      ;; switching between dark themes
      ((and (member custom-enabled-themes dark-theme-list) (member direction '(1 2)))
-      (progn (thecycle-switch-between-themes dark-theme-list direction)
-	     (call-interactively 'thecycle-switch-theme)))
+      (progn (theme-cycle-switch-between-themes dark-theme-list direction)
+	     (call-interactively 'theme-cycle-switch-theme)))
      ;; switching between light themes
      ((and (member custom-enabled-themes light-theme-list) (member direction '(1 2)))
-      (progn (thecycle-switch-between-themes light-theme-list direction)
-	     (call-interactively 'thecycle-switch-theme)))
+      (progn (theme-cycle-switch-between-themes light-theme-list direction)
+	     (call-interactively 'theme-cycle-switch-theme)))
      ((member direction '(3 4))
-     (thecycle-switch-between-lists theme-pattern-list direction))
+     (theme-cycle-switch-between-lists theme-pattern-list direction))
     ;; else, do nothing
     (t (push key unread-command-events)  ))))
 ;; end
 
-(provide 'the-cycle)
-;;; the-cycle.el ends here
+(provide 'theme-cycle)
+;;; theme-cycle.el ends here
