@@ -59,11 +59,11 @@
      (new-pos (cond
 	       ((< (+ inc pos) 0) (- len 1))
 	       (t (% (+ inc pos) len )))))
-    (message "%s %s %s %s" len pos inc new-pos)
     (disable-all-themes)
     (dolist (cur-theme (nth new-pos themes))
       (load-theme cur-theme t)
-      (message "loading %s" cur-theme))))
+      (message "Loading: %s theme" cur-theme)
+      (sleep-for 0.5))))
 
 ;; begin function
 (defun thecycle-switch-theme (key)
@@ -75,21 +75,16 @@ KEY A and D will be switch between soft, medium, and hard, if its provided."
     (cond
      ;; switching between dark themes
      ((and (member custom-enabled-themes dark-theme-list) (member direction '(1 2)))
-      (thecycle-switch-between-themes dark-theme-list direction)
-       )
-     ;; ((and (member custom-enabled-themes dark-theme-list) (member direction '(1 2))
-
-      ;; (thecycle-switch-between-themes dark-theme-list direction))
+      (progn (thecycle-switch-between-themes dark-theme-list direction)
+	     (call-interactively 'thecycle-switch-theme)))
      ;; switching between light themes
-     ;; ((and (member custom-enabled-themes light-theme-list) (member direction '(1 2)))
-      ;; (thecycle-switch-between-themes light-theme-list direction))
-     ;; if switching between lists
-    ;; ((member direction '(3 4))
-     ;; (thecycle-switch-between-lists theme-list direction))
+     ((and (member custom-enabled-themes light-theme-list) (member direction '(1 2)))
+      (progn (thecycle-switch-between-themes light-theme-list direction)
+	     (call-interactively 'thecycle-switch-theme)))
+     ((member direction '(3 4))
+     (thecycle-switch-between-lists theme-list direction))
     ;; else, do nothing
-    (t (push key unread-command-events)
-     ))
-    ))
+    (t (push key unread-command-events)  ))))
 ;; end
 
 (provide 'the-cycle)
