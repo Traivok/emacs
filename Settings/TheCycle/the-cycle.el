@@ -18,15 +18,17 @@
     (disable-theme cur-theme)))
 
 (defvar light-theme-list (list) "All of your light themes.")
-
 (defvar dark-theme-list (list) "All of your dark themes.")
-(defvar theme-list (list 'light-theme-list 'dark-theme-list) "All of your theme lists.")
+(defvar theme-pattern-list (list) "All of your theme lists.")
 
-(setq light-theme-list (list))
+(setq theme-pattern-list nil)
 
 (defun thecycle-add-theme-to-list (your-list value)
   "Add to YOUR-LIST a VALUE."
-  (add-to-list your-list (list value)))
+  (delete (symbol-value your-list) theme-pattern-list)
+  (add-to-list your-list (list value))
+  (add-to-list 'theme-pattern-list  (symbol-value your-list))
+  )
 
 (thecycle-add-theme-to-list 'light-theme-list 'gruvbox-light-soft)
 (thecycle-add-theme-to-list 'light-theme-list 'gruvbox-light-medium)
@@ -58,9 +60,20 @@
 		 (t (% (+ inc pos) len )))))
     (nth new-pos your-list)))
 
+(defun thecycle-find-in-patterns (search-for)
+  "SEARCH-FOR a theme and return in what list it's."
+  (message "\n\nGet called for: %s" search-for)
+
+  (let ((out-ret nil))
+    (dolist (theme-group theme-pattern-list)
+      (dolist (cur-theme theme-group)
+	(when (or (equal search-for cur-theme) (member search-for cur-theme))
+      (setq-local out-ret theme-group))))
+    out-ret))
+
 (defun thecycle-switch-between-lists (themes direction)
-  "Switch between elements of THEMES and DIRECTION rules the switching directionection."
-  )
+  "Switch between THEMES and DIRECTION rules the switching directionection."
+  (let ((cur-list (thecycle-find-in-patterns custom-enabled-themes)))))
 
 (defun thecycle-switch-between-themes (themes direction)
   "Switch between elements of THEMES and DIRECTION rules the switching directionection."
@@ -88,7 +101,7 @@ KEY A and D will be switch between soft, medium, and hard, if its provided."
       (progn (thecycle-switch-between-themes light-theme-list direction)
 	     (call-interactively 'thecycle-switch-theme)))
      ((member direction '(3 4))
-     (thecycle-switch-between-lists theme-list direction))
+     (thecycle-switch-between-lists theme-pattern-list direction))
     ;; else, do nothing
     (t (push key unread-command-events)  ))))
 ;; end

@@ -1,3 +1,3 @@
 * TODO Need implement: [0/1]
 ** TODO Interactive call of thecycle-add-theme-to-list function
-** TODO Smarter thecycle-get-new-element function
+** TODO [#A] Smarter thecycle-get-new-element function
