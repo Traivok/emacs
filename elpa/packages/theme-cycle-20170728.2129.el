@@ -4,7 +4,8 @@
 
 ;; Autor: José Ricardo Alves Figueirôa <jraf@cin.ufpe.br>
 ;; Version: 1.0
-;; Package-Requires: ((emacs "24.3"))
+;; Package-Version: 20170728.2129
+;; Package-Requires: ((emacs "24.3") (cl-lib))
 ;; Keywords: faces
 ;; URL: https://github.com/Traivok/emacs-theme-cycle
 

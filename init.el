@@ -62,7 +62,7 @@
  '(org-agenda-files nil)
  '(package-selected-packages
    (quote
-    (theme-cycle rainbow-delimiters 0blayout powerline gruvbox-theme yasnippet smart-comment org-bullets org-ac magit flycheck-rtags flycheck-irony company-rtags company-irony-c-headers company-irony company-c-headers cmake-mode cmake-ide auto-highlight-symbol))))
+    (package-build flycheck-package package-lint theme-cycle rainbow-delimiters 0blayout powerline gruvbox-theme yasnippet smart-comment org-bullets org-ac magit flycheck-rtags flycheck-irony company-rtags company-irony-c-headers company-irony company-c-headers cmake-mode cmake-ide auto-highlight-symbol))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

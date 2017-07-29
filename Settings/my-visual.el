@@ -8,15 +8,14 @@
 (require 'rainbow-delimiters)
 (require 'powerline)
 
-(package-install-file "~/.emacs.d/Settings/Theme-Cycle/theme-cycle.el")
-(require 'theme-cycle "~/.emacs.d/Settings/Theme-Cycle/theme-cycle.el")
+(require 'theme-cycle)
 
-(theme-cycle-add-theme-to-group 'dark-theme-group 'gruvbox-dark-soft)
-(theme-cycle-add-theme-to-group 'dark-theme-group 'gruvbox-dark-medium)
-(theme-cycle-add-theme-to-group 'dark-theme-group 'gruvbox-dark-hard)
-(theme-cycle-add-theme-to-group 'light-theme-group 'gruvbox-light-soft)
-(theme-cycle-add-theme-to-group 'light-theme-group 'gruvbox-light-medium)
-(theme-cycle-add-theme-to-group 'light-theme-group 'gruvbox-light-hard)
+(theme-cycle-add-theme-to-group 'theme-cycle-dark-group 'gruvbox-dark-soft)
+(theme-cycle-add-theme-to-group 'theme-cycle-dark-group 'gruvbox-dark-medium)
+(theme-cycle-add-theme-to-group 'theme-cycle-dark-group 'gruvbox-dark-hard)
+(theme-cycle-add-theme-to-group 'theme-cycle-light-group 'gruvbox-light-soft)
+(theme-cycle-add-theme-to-group 'theme-cycle-light-group 'gruvbox-light-medium)
+(theme-cycle-add-theme-to-group 'theme-cycle-light-group 'gruvbox-light-hard)
 
 ;; set Terminus font
 (set-frame-font "xos4 Terminus 12")

@@ -1,10 +1,11 @@
-;;; theme-cycle.el --- Provides a switching theme enviroment.
+;;; theme-cycle.el --- This package provides a switching theme enviroment.
 
 ;; Copyright (c) 2017 Free Software Foundation, Inc.
 
 ;; Autor: José Ricardo Alves Figueirôa <jraf@cin.ufpe.br>
 ;; Version: 1.0
-;; Package-Requires: ((emacs "24.3"))
+;; Package-Version: 20170728.2046
+;; Package-Requires: nil
 ;; Keywords: faces
 ;; URL: https://github.com/Traivok/emacs-theme-cycle
 
@@ -29,12 +30,10 @@
 
 ;;; Code:
 
-(require 'cl-lib)
-
 ;;; GLOBAL VARIABLES ;;;
-(defvar theme-cycle-light-group nil "All of your light themes.")
-(defvar theme-cycle-dark-group nil "All of your dark themes.")
-(defvar theme-cycle-all-groups nil "All of your theme groups.")
+(defvar light-theme-group nil "All of your light themes.")
+(defvar dark-theme-group nil "All of your dark themes.")
+(defvar all-theme-groups nil "All of your theme groups.")
 (defvar theme-cycle-switch-delay 0.25 "Switching delay.")
 ;; END ;;;
 
@@ -69,7 +68,7 @@ Return values can be (+1, -1 or nil), +1 when key refer to horizontal, -1 when k
 (defun theme-cycle-what-group (search-for)
   "SEARCH-FOR a theme and return the first group that it appears."
   (let ((what-group nil))
-    (dolist (theme-group theme-cycle-all-groups)
+    (dolist (theme-group all-theme-groups)
       (dolist (cur-theme theme-group)
 	(when (subsetp search-for cur-theme)
       (setq-local what-group theme-group))))
@@ -81,13 +80,13 @@ Return values can be (+1, -1 or nil), +1 when key refer to horizontal, -1 when k
   "Switch between THEMES and DIRECTION rules the switching directionection."
   (let ((cur-group nil))
     ;; searching the theme group that contains the current enabled theme
-    (dolist (group theme-cycle-all-groups)
+    (dolist (group all-theme-groups)
       (message "Searching if %s %s" custom-enabled-themes group)
       (when (member custom-enabled-themes group)
     	(setq-local cur-group group)))
     ;; this ugly code occurs because custom-enabled-theme returns lists
     ;; so i'm working with unitary list, but i pretend to fix it later
-    (let* ((next-group (theme-cycle-get-new-element theme-cycle-all-groups cur-group direction))
+    (let* ((next-group (theme-cycle-get-new-element all-theme-groups cur-group direction))
 	   (next-theme (nth 0 (nth 0 next-group))))
       ;; loading next theme
       (theme-cycle-disable-all-themes)
@@ -106,9 +105,9 @@ Return values can be (+1, -1 or nil), +1 when key refer to horizontal, -1 when k
 ;;; INTERFACE ;;;
 (defun theme-cycle-add-theme-to-group (your-group theme)
   "Add to YOUR-GROUP a THEME."
-  (setq theme-cycle-all-groups (delete (symbol-value your-group) theme-cycle-all-groups))
+  (setq all-theme-groups (delete (symbol-value your-group) all-theme-groups))
   (add-to-list your-group (list theme))
-  (add-to-list 'theme-cycle-all-groups  (symbol-value your-group)))
+  (add-to-list 'all-theme-groups  (symbol-value your-group)))
 ;;; END ;;;
 
 ;;; INTERACTIVE FUNCTIONS ;;;
@@ -144,7 +143,7 @@ Orientation: %s\n
 Direction: %s\n
 Current Group: %s\n
 Custom-Enabled-Theme: %s\n
-All-Theme-Group: %s" key orientation direction cur-group custom-enabled-themes theme-cycle-all-groups)))))
+All-Theme-Group: %s" key orientation direction cur-group custom-enabled-themes all-theme-groups)))))
 ;; end
 
 ;;; INTERACTIVE
