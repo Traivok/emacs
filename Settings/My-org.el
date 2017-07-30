@@ -7,6 +7,7 @@
 (require 'org)
 (require 'org-ac)
 (require 'org-bullets)
+(require 'org-alert)
 
 (defun org-summary-todo (n-done n-not-done)
   "Switch entry to DONE when all subentries are done, to TODO otherwise.
@@ -41,8 +42,19 @@ If N-NOT-DONE = 0, then done, else todo."
       '(lambda ()
          (delete '("\\.pdf\\'" . default) org-file-apps)
 	 (delete '("\\.x?html?\\'" . default) org-file-apps)
-         (add-to-list 'org-file-apps '("\\.pdf\\'" . "qpdfview %s"))
+         (add-to-list 'org-file-apps '("\\.pdf\\'" . "foxitreader %s"))
 	 (add-to-list 'org-file-apps '("\\.x?html?\\'" . "/usr/bin/firefox --new-tab %s"))))
+
+;; log by time done tasks
+(setq org-log-done 'time)
+(defun my-org-archive-done-tasks ()
+  "Archive done tasks automatically."
+  (interactive)
+  (org-map-entries 'org-archive-subtree "/DONE" 'file))
+
+;; org alert
+(org-alert-enable)
+(setq alert-default-style 'libnotify)
 
 (provide 'my-org)
 ;;; my-org.el ends here

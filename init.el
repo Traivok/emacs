@@ -59,10 +59,12 @@
  '(custom-safe-themes
    (quote
     ("3eb93cd9a0da0f3e86b5d932ac0e3b5f0f50de7a0b805d4eb1f67782e9eb67a4" "8d3c5e9ba9dcd05020ccebb3cc615e40e7623b267b69314bdb70fe473dd9c7a8" "24685b60b28b071596be6ba715f92ed5e51856fb87114cbdd67775301acf090d" "f23a961abba42fc5d75bf94c46b5688c52683c02b3a81313dd0738b4d48afd1d" "5673c365c8679addfb44f3d91d6b880c3266766b605c99f2d9b00745202e75f6" "3eb2b5607b41ad8a6da75fe04d5f92a46d1b9a95a202e3f5369e2cdefb7aac5c" default)))
- '(org-agenda-files nil)
+ '(org-agenda-files
+   (quote
+    ("~/Todo.org" "~/.emacs.d/Demandas.org" "~/Estudo/Lembretes.org")))
  '(package-selected-packages
    (quote
-    (package-build flycheck-package package-lint theme-cycle rainbow-delimiters 0blayout powerline gruvbox-theme yasnippet smart-comment org-bullets org-ac magit flycheck-rtags flycheck-irony company-rtags company-irony-c-headers company-irony company-c-headers cmake-mode cmake-ide auto-highlight-symbol))))
+    (org-alert brainfuck-mode flycheck-inline package-build flycheck-package package-lint theme-cycle rainbow-delimiters 0blayout powerline gruvbox-theme yasnippet smart-comment org-bullets org-ac magit flycheck-rtags flycheck-irony company-rtags company-irony-c-headers company-irony company-c-headers cmake-mode cmake-ide auto-highlight-symbol))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

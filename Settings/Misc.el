@@ -9,7 +9,7 @@
 (require 'my-functions "~/.emacs.d/Settings/my-functions.el")
 (setq midnight-period (* 2 60 60))
 
-;; ido
+;; Ido
 (require 'ido)
 (defvar ido-enable-flex-matching t "Flexible string matching.")
 (defvar ido-every-where t "Always ido.")

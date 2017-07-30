@@ -8,7 +8,8 @@
 
 (setq my-package-list '(auto-highlight-symbol cmake-ide cmake-mode company-c-headers irony company-irony company-irony-c-headers
 					      rtags company-rtags flycheck-irony flycheck-rtags magit smart-comment yasnippet
-					      midnight ido org org-ac org-bullets gruvbox-theme powerline rainbow-delimiters))
+					      midnight ido org org-ac org-bullets gruvbox-theme powerline rainbow-delimiters
+					      org-alert))
 
 ;; update database
 (unless package-archive-contents (package-refresh-contents))

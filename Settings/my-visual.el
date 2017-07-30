@@ -10,6 +10,8 @@
 
 (require 'theme-cycle)
 
+;; inline flycheck errors
+
 (theme-cycle-add-theme-to-group 'theme-cycle-dark-group 'gruvbox-dark-soft)
 (theme-cycle-add-theme-to-group 'theme-cycle-dark-group 'gruvbox-dark-medium)
 (theme-cycle-add-theme-to-group 'theme-cycle-dark-group 'gruvbox-dark-hard)
