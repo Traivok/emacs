@@ -20,7 +20,8 @@
 (theme-cycle-add-theme-to-group 'theme-cycle-light-group 'gruvbox-light-hard)
 
 ;; set Terminus font
-(set-frame-font "xos4 Terminus 12")
+(add-to-list 'default-frame-alist
+	     '(font . "xos4 Terminus 12"))
 
 ;; theme
 (powerline-center-theme)
