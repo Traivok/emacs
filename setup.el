@@ -1,4 +1,3 @@
-
 (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
                     (not (gnutls-available-p))))
        (url (concat (if no-ssl "http" "https") "://melpa.org/packages/")))
@@ -28,6 +27,9 @@
 
 (require 'midnight)
 (require 'ido)
+
+(setq user-full-name "José Ricardo A. Figueirôa"
+      user-mail-address "jraf@cin.ufpe.br")
 
 (delete-selection-mode t)
 

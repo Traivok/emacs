@@ -1,12 +1,8 @@
 #+TITLE: My emacs setup
 #+AUTHOR: José Ricardo <jraf@cin.ufpe.br>
 
-# Local Variables:
-# flycheck-disabled-checkers: (emacs-lisp-checkdoc)
-# End:
-
 * Package management
-
+  
   Melpa  
   #+BEGIN_SRC emacs-lisp
 (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
@@ -51,6 +47,12 @@
 (require 'ido)  
   #+END_SRC
   
+  Personal info
+  #+BEGIN_SRC emacs-lisp
+    (setq user-full-name "José Ricardo A. Figueirôa"
+          user-mail-address "jraf@cin.ufpe.br")
+  #+END_SRC
+
   Makes it so that when you start typing when a region is active,
   it gets replaced with your text.
   #+BEGIN_SRC emacs-lisp
@@ -410,7 +412,6 @@ Otherwise, just insert the typed character."
       (if (string-match-p regexp bf-name)
 	  (kill-buffer bf)))))  
   #+END_SRC
-
   
 * Org
   
