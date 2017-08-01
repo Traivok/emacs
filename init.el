@@ -6,40 +6,26 @@
 ;;; Visual, font and theme configuration and general setups like
 ;;; show-paren, smart-comment
 
+;; Local Variables:
+;; flycheck-disabled-checkers: (emacs-lisp-checkdoc)
+;; End:
+
 ;;; Code:
 
-(require 'package) ;; You might already have this line
-(let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
-                    (not (gnutls-available-p))))
-       (url (concat (if no-ssl "http" "https") "://melpa.org/packages/")))
-  (add-to-list 'package-archives (cons "melpa" url) t))
-(when (< emacs-major-version 24)
-  ;; For important compatibility libraries like cl-lib
-  (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
-(package-initialize) ;; You might already have this line
+(require 'package)
+(package-initialize)
 
-;; install and update packages
-(require 'my-installed-packages "~/.emacs.d/Settings/my-installed-packages.el")
-;; end
+(require 'org)
 
-;;          Load packages and theirs configurations          ;;
-(defun load-directory (dir)
-  "Load all *.el files at (DIR)."
-  (let ((load-it (lambda (f)
-		   (load-file (concat (file-name-as-directory dir) f)))
-		 ))
-    (mapc load-it (directory-files dir nil "\\.el$"))))
-(load-directory "~/.emacs.d/Settings/")
-;; End
+(org-babel-do-load-languages ;; auto load elisp
+ 'org-babel-load-languages
+ '((emacs-lisp . t)))
 
-;;            Set backup directory
-(setq backup-directory-alist `(("." . "/home/ricardo/Development/.backup")))
-(setq delete-old-versions t
-  kept-new-versions 2
-  kept-old-versions 2
-  version-control t)
-(put 'scroll-left 'disabled nil)
-;; End
+(setq org-confirm-babel-evaluate nil) ;; do not ask before evaluate
+
+(org-babel-load-file ;; load setup
+ (expand-file-name "setup.org"
+                   user-emacs-directory))
 
 (provide 'init)
 ;;; init.el ends here
