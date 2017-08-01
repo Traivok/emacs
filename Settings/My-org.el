@@ -9,6 +9,25 @@
 (require 'org-bullets)
 (require 'org-alert)
 
+(defun org-file-path (filename)
+  "Return the absolute address of an org FILENAME, given its relative name."
+  (concat (file-name-as-directory org-directory) filename))
+
+
+(setq org-directory "~/Org")
+(defvar org-index-file (org-file-path "index.org"))
+(setq org-agenda-files (list org-index-file))
+(setq org-archive-location
+      (concat (org-file-path "archive.org") "::* From %s"))
+
+(defun hrs/mark-done-and-archive ()
+  "Mark the state of an 'org-mode' item as DONE and archive it."
+  (interactive)
+  (org-todo 'done)
+  (org-archive-subtree))
+
+(define-key org-mode-map (kbd "C-c C-x C-s") 'hrs/mark-done-and-archive)
+
 (defun org-summary-todo (n-done n-not-done)
   "Switch entry to DONE when all subentries are done, to TODO otherwise.
 Get N-DONE by the org statistics hook.
@@ -55,6 +74,29 @@ If N-NOT-DONE = 0, then done, else todo."
 ;; org alert
 (org-alert-enable)
 (setq alert-default-style 'libnotify)
+
+(add-hook 'org-mode-hook
+	  (lambda () (org-update-statistics-cookies t)))
+
+(defun worf-delete-subtree (arg)
+  "Delete subtree or ARG chars."
+  (interactive "p")
+  (if (and (looking-at "\\*")
+           (looking-back "^\\**" (line-beginning-position)))
+      (org-cut-subtree)
+    (delete-char arg)))
+
+;; define an advice
+(defadvice worf-delete-subtree (after my-org-update-parent-todo ())
+  (org-update-parent-todo-statistics))
+;; activate all advices to this function
+(ad-activate 'worf-delete-subtree)
+
+(define-key org-mode-map (kbd "C-d") 'worf-delete-subtree)
+
+(define-key org-agenda-mode-map (kbd "C-c m") 'org-agenda-month-view)
+
+;; (setq org-use-property-inheritance t)
 
 (provide 'my-org)
 ;;; my-org.el ends here

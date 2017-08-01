@@ -92,5 +92,8 @@ Otherwise, just insert the typed character."
 (global-auto-highlight-symbol-mode t)
 ;; end
 
+;; remove namespace identing
+(c-set-offset 'innamespace 0)
+
 (provide 'my-cpp)
 ;;; my-cpp.el ends here
