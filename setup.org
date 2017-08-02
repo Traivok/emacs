@@ -52,6 +52,11 @@
     (setq user-full-name "José Ricardo A. Figueirôa"
           user-mail-address "jraf@cin.ufpe.br")
   #+END_SRC
+  
+  Use bash, not zsh, as shell
+  #+BEGIN_SRC emacs-lisp
+    (setq explicit-shell-file-name "/bin/bash")
+  #+END_SRC
 
   Makes it so that when you start typing when a region is active,
   it gets replaced with your text.
