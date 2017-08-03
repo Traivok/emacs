@@ -26,6 +26,8 @@
 (when (not package-archive-contents)
     (package-refresh-contents))
 
+(load "~/.emacs.d/lisp/PG/generic/proof-site")
+
 (require 'midnight)
 (require 'ido)
 
@@ -72,6 +74,7 @@
 (require 'rainbow-delimiters)
 (require 'powerline)
 (require 'theme-cycle) ;; not melpa package
+(require 'auto-highlight-symbol)
 
 (theme-cycle-add-theme-to-group 'theme-cycle-dark-group 'gruvbox-dark-soft)
 (theme-cycle-add-theme-to-group 'theme-cycle-dark-group 'gruvbox-dark-medium)
@@ -92,8 +95,11 @@
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)  
 
 ;; auto highlighting
-(require 'auto-highlight-symbol)
 (global-auto-highlight-symbol-mode t)
+
+(when (file-exists-p "~/.config/i3/config")
+ (set-frame-parameter (selected-frame) 'alpha '(85 . 50))
+ (add-to-list 'default-frame-alist '(alpha . (85 . 50))))
 
 ;; Display, Troggle, enable...
 (define-global-minor-mode my-linum-mode linum-mode
@@ -105,7 +111,7 @@
 (my-linum-mode 1)
 (tool-bar-mode -1)
 (menu-bar-mode -1)
-(defvar linum-format "%d ")
+(defvar linum-format "%d  ")
 (toggle-scroll-bar -1)
 ;; End
 
@@ -316,7 +322,6 @@ Otherwise, just insert the typed character."
 
 (setq org-directory "~/Org")
 (defvar org-index-file (org-file-path "index.org"))
-(setq org-agenda-files (list org-index-file))
 (setq org-archive-location
       (concat (org-file-path "archive.org") "::* From %s"))  
 

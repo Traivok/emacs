@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: Deadline
+# key: dl
+# --
+${1:DEADLINE: <${2:}>} $0
+	

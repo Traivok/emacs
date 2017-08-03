@@ -6,6 +6,24 @@
 ;;; Visual, font and theme configuration and general setups like
 ;;; show-paren, smart-comment
 
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(org-agenda-files
+   (quote
+    ("~/Org/index.org" "~/Org/IC.org" "~/Org/Estudo.org" "~/Org/Disciplinas.org")))
+ '(package-selected-packages
+   (quote
+    (i3wm yasnippet theme-cycle smart-comment rainbow-delimiters powerline package-build org-bullets org-alert org-ac magit gruvbox-theme flycheck-rtags flycheck-package flycheck-irony company-rtags company-irony-c-headers company-irony company-c-headers cmake-mode cmake-ide brainfuck-mode auto-highlight-symbol 0blayout)))
+ '(safe-local-variable-values (quote ((org-use-property-inheritance . t)))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
 ;; Local Variables:
 ;; flycheck-disabled-checkers: (emacs-lisp-checkdoc)
 ;; End:
@@ -29,26 +47,3 @@
 
 (provide 'init)
 ;;; init.el ends here
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(org-agenda-files
-   (quote
-    ("~/Org/index.org" "~/Org/Disciplinas.org" "~/Org/Rotina.org")))
- '(safe-local-variable-values
-   (quote
-    ((eval with-eval-after-load
-	   (quote flycheck)
-	   (setq-default flycheck-disabled-checkers
-			 (quote
-			  (emacs-lisp-checkdoc))))
-     (org-use-property-inheritance . t)))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
