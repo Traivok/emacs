@@ -434,6 +434,13 @@ If N-NOT-DONE = 0, then done, else todo."
 (global-set-key (kbd "M-;") 'smart-comment)
 ;; end
 
+;;window navigation
+(global-set-key (kbd "C-c <left>")
+                (lambda () (interactive) (other-window -1)))
+(global-set-key (kbd "C-c <right>")
+                (lambda () (interactive) (other-window +1)))
+;;end
+
 ;; open shell
 (global-set-key (kbd "C-c i s") 'shell-other-window)
 (global-set-key (kbd "C-c i e") 'eshell-other-window)

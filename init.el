@@ -16,7 +16,7 @@
     ("~/Org/index.org" "~/Org/IC.org" "~/Org/Estudo.org" "~/Org/Disciplinas.org")))
  '(package-selected-packages
    (quote
-    (i3wm yasnippet theme-cycle smart-comment rainbow-delimiters powerline package-build org-bullets org-alert org-ac magit gruvbox-theme flycheck-rtags flycheck-package flycheck-irony company-rtags company-irony-c-headers company-irony company-c-headers cmake-mode cmake-ide brainfuck-mode auto-highlight-symbol 0blayout)))
+    (rainbow-mode i3wm yasnippet theme-cycle smart-comment rainbow-delimiters powerline package-build org-bullets org-alert org-ac magit gruvbox-theme flycheck-rtags flycheck-package flycheck-irony company-rtags company-irony-c-headers company-irony company-c-headers cmake-mode cmake-ide brainfuck-mode auto-highlight-symbol 0blayout)))
  '(safe-local-variable-values (quote ((org-use-property-inheritance . t)))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

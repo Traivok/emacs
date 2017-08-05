@@ -22,7 +22,7 @@
 (setq my-package-list '(auto-highlight-symbol cmake-ide cmake-mode company-c-headers irony company-irony company-irony-c-headers
 					      rtags company-rtags flycheck-irony flycheck-rtags magit smart-comment yasnippet
 					      midnight ido org org-ac org-bullets gruvbox-theme powerline rainbow-delimiters
-					      org-alert))  
+					      org-alert rainbow-mode))  
   #+END_SRC
   
   Update and install
@@ -558,46 +558,53 @@ If N-NOT-DONE = 0, then done, else todo."
   
   Kbd
   #+BEGIN_SRC emacs-lisp
-(global-set-key (kbd "C-c w v") 'v-resize)
-(global-set-key (kbd "C-c w h") 'h-resize)
-;; end
+    (global-set-key (kbd "C-c w v") 'v-resize)
+    (global-set-key (kbd "C-c w h") 'h-resize)
+    ;; end
 
-;; C/C++ completion
-(define-key c-mode-base-map [?\M-\r] 'company-complete)
-(global-set-key (kbd "C-c y") 'yas-insert-snippet)
-;; end
+    ;; C/C++ completion
+    (define-key c-mode-base-map [?\M-\r] 'company-complete)
+    (global-set-key (kbd "C-c y") 'yas-insert-snippet)
+    ;; end
 
-;; Irony
-(define-key c-mode-base-map (kbd "C-c t") 'irony-get-type)
-;; end
+    ;; Irony
+    (define-key c-mode-base-map (kbd "C-c t") 'irony-get-type)
+    ;; end
 
-;; Goto setup files and folders
-(global-set-key (kbd "C-c i f") 'goto-init-file)
-(global-set-key (kbd "C-c i d") 'goto-setup-dir)
-;; end
+    ;; Goto setup files and folders
+    (global-set-key (kbd "C-c i f") 'goto-init-file)
+    (global-set-key (kbd "C-c i d") 'goto-setup-dir)
+    ;; end
 
-;; Magit
-(global-set-key (kbd "C-c s") 'magit-status)
-(global-set-key (kbd "C-c p") 'magit-push)
-;; end
+    ;; Magit
+    (global-set-key (kbd "C-c s") 'magit-status)
+    (global-set-key (kbd "C-c p") 'magit-push)
+    ;; end
 
-;; Move lines
-(global-set-key [\C-\S-up] 'move-text-up)
-(global-set-key [\C-\S-down] 'move-text-down)
-;; end
+    ;; Move lines
+    (global-set-key [\C-\S-up] 'move-text-up)
+    (global-set-key [\C-\S-down] 'move-text-down)
+    ;; end
 
-;; evaluation
-(global-set-key (kbd "M-_") 'eval-region)
-(global-set-key (kbd "M-+") 'eval-buffer)
-;; end
+    ;; evaluation
+    (global-set-key (kbd "M-_") 'eval-region)
+    (global-set-key (kbd "M-+") 'eval-buffer)
+    ;; end
 
-;; smart comment
-(global-set-key (kbd "M-;") 'smart-comment)
-;; end
+    ;; smart comment
+    (global-set-key (kbd "M-;") 'smart-comment)
+    ;; end
 
-;; open shell
-(global-set-key (kbd "C-c i s") 'shell-other-window)
-(global-set-key (kbd "C-c i e") 'eshell-other-window)  
+    ;;window navigation
+    (global-set-key (kbd "C-c <left>")
+                    (lambda () (interactive) (other-window -1)))
+    (global-set-key (kbd "C-c <right>")
+                    (lambda () (interactive) (other-window +1)))
+    ;;end
+
+    ;; open shell
+    (global-set-key (kbd "C-c i s") 'shell-other-window)
+    (global-set-key (kbd "C-c i e") 'eshell-other-window)  
   #+END_SRC
 
   Org
