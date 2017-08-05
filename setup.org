@@ -157,8 +157,8 @@
 I still do not know if wmctrl is installed on my college computers.
   #+BEGIN_SRC emacs-lisp
 (when (file-exists-p "~/.config/i3/config")
- (set-frame-parameter (selected-frame) 'alpha '(85 . 50))
- (add-to-list 'default-frame-alist '(alpha . (85 . 50))))
+ (set-frame-parameter (selected-frame) 'alpha '(95 . 80))
+ (add-to-list 'default-frame-alist '(alpha . (95 . 80))))
   #+END_SRC
 
   GUI Setup

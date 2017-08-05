@@ -13,7 +13,7 @@
 (setq my-package-list '(auto-highlight-symbol cmake-ide cmake-mode company-c-headers irony company-irony company-irony-c-headers
                                               rtags company-rtags flycheck-irony flycheck-rtags magit smart-comment yasnippet
                                               midnight ido org org-ac org-bullets gruvbox-theme powerline rainbow-delimiters
-                                              org-alert))
+                                              org-alert rainbow-mode))
 
 (unless package-archive-contents (package-refresh-contents))
 
@@ -98,8 +98,8 @@
 (global-auto-highlight-symbol-mode t)
 
 (when (file-exists-p "~/.config/i3/config")
- (set-frame-parameter (selected-frame) 'alpha '(85 . 50))
- (add-to-list 'default-frame-alist '(alpha . (85 . 50))))
+ (set-frame-parameter (selected-frame) 'alpha '(90 . 75))
+ (add-to-list 'default-frame-alist '(alpha . (90 . 75))))
 
 ;; Display, Troggle, enable...
 (define-global-minor-mode my-linum-mode linum-mode
