@@ -2,20 +2,19 @@
 
 # Emacs installer for my college's computers
 
-BIN="~/bin/" # where emacs bin will be located
-PREFIX="~/Development/" # where emacs will be located
-E_SETUP="~/.emacs.d/" # where .emacs location
+BIN="bin/" # where emacs bin will be located
+PREFIX="Development/" # where emacs will be located
+E_SETUP=".emacs.d/" # where .emacs location
 E_SETUP_REMOTE="https://github.com/Traivok/emacs/" # default url of .emacs.d setup
 
 function make-emacs { # configuration directives
-    ./configure --prefix=~/emacs --bindir=$BIN
+    ./configure --prefix=~/emacs --bindir=$BIN --with-gif=no --with-gnutls=no
     make
 }
 
 function make-dir { # check and make prefixdir, bindir
-    if [ -d $PREFIX ] || [ -d $BIN ]; then
-	mkdir $PREFIX && echo "${PREFIX} created."
-	mkdir $BIN && echo "${BIN} created."
+    if [ ! -d $1 ]; then
+	mkdir $1 && echo "${1} created."
     fi    
 }
 
@@ -65,7 +64,9 @@ function download-rtags { # download rtags or update if it was found
     fi
 }
 
-make-dir
+cd "$HOME"
+make-dir "$PREFIX"
+make-dir "$BIN"
 download-emacs
-download-dot-emacs
-download-rtags
+#download-dot-emacs
+#download-rtags
