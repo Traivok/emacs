@@ -1,72 +1,19 @@
-#!/bin/bash
+#! /bin/sh
+rm -rf build
+mkdir -p build
+cd build
+# Install ncurses
+wget http://ftp.gnu.org/pub/gnu/ncurses/ncurses-5.9.tar.gz
+tar xvf ncurses-5.9.tar.gz
+cd ncurses-5.9
+./configure --prefix=$HOME/.local --without-install-prefix --with-termlib --enable-termcap --enable-getcap --enable-tcap-names --with-shared
+make && make install
+cd ..
 
-# Emacs installer for my college's computers
-
-BIN="bin/" # where emacs bin will be located
-PREFIX="Development/" # where emacs will be located
-E_SETUP=".emacs.d/" # where .emacs location
-E_SETUP_REMOTE="https://github.com/Traivok/emacs/" # default url of .emacs.d setup
-
-function make-emacs { # configuration directives
-    ./configure --prefix=~/emacs --bindir=$BIN --with-gif=no --with-gnutls=no
-    make
-}
-
-function make-dir { # check and make prefixdir, bindir
-    if [ ! -d $1 ]; then
-	mkdir $1 && echo "${1} created."
-    fi    
-}
-
-function download-emacs { # download emacs or update if it was found
-    if [ -f "${BIN}/emacs"  ]; then
-	echo -n "Emacs was found, do you want update it? "
-	read answear
-
-	if echo "$answer" | grep -iq "^y" ; then 
-	    cd "${PREFIX}emacs/"
-	    git pull -v origin master
-	    make-emacs
-	fi
-	
-    else
-	cd $PREFIX && git clone -v https://github.com/emacs-mirror/emacs && cd emacs
-	make-emacs
-    fi    
-}
-
-function download-dot-emacs { # download .emacs.d/ dir or update if it was found
-    if [ -d ~/.emacs.d ]; then
-	cd ~$E_SETUP
-	git pull -v origin master
-    else
-	cd ~/ && git clone -v $E_SETUP_REMOTE $E_SETUP
-    fi    
-}
-
-function download-rtags { # download rtags or update if it was found
-
-    if [ -d "{$PREFIX}rtags" ]; then
-	echo -n "Rtags was found, do you want update it? "
-	read answear
-	
-	if echo "$answear" | grep -iq "^y" ; then
-	    git pull -v origin master
-	    cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 .
-	    make
-	fi
-
-    else
-	cd $PREFIX && git clone --recursive https://github.com/Andersbakken/rtags.git
-	cd rtags
-	cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 .
-	make
-    fi
-}
-
-cd "$HOME"
-make-dir "$PREFIX"
-make-dir "$BIN"
-download-emacs
-#download-dot-emacs
-#download-rtags
+# install emacs
+wget http://open-source-box.org/emacs/emacs-25.2.tar.xz
+tar xvf emacs-25.2.tar.xz
+cd emacs-25.2
+./configure --prefix=$HOME/.local LDFLAGS=-L$HOME/.local/lib --without-pop --without-kerberos --without-mmdf --without-sound --without-wide-int --without-xpm --without-jpeg --without-tiff --without-gif --without-png --without-rsvg --without-xml2 --without-imagemagick --without-xft --without-libotf --without-m17n-flt --without-xaw3d --without-xim --without-ns --without-gpm --without-dbus --without-gconf --without-gsettings --without-selinux --without-gnutls --without-x
+make && make install
+cd ..
