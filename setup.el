@@ -87,7 +87,8 @@
              '(font . "xos4 Terminus 12"))
 
 (powerline-center-theme)
-(load-theme 'gruvbox-dark-medium t)
+
+(load-theme 'gruvbox-dark-soft t)
 
 ;; Add highlight matching parenthesis
 (show-paren-mode 1)
@@ -96,10 +97,6 @@
 
 ;; auto highlighting
 (global-auto-highlight-symbol-mode t)
-
-(when (file-exists-p "~/.config/i3/config")
- (set-frame-parameter (selected-frame) 'alpha '(90 . 75))
- (add-to-list 'default-frame-alist '(alpha . (90 . 75))))
 
 ;; Display, Troggle, enable...
 (define-global-minor-mode my-linum-mode linum-mode
@@ -390,8 +387,8 @@ If N-NOT-DONE = 0, then done, else todo."
   (interactive)
   (org-map-entries 'org-archive-subtree "/DONE" 'file))
 
-(org-alert-enable)
-(setq alert-default-style 'libnotify)
+;(org-alert-enable)
+;(setq alert-default-style 'libnotify)
 
 (require 'org)
 (require 'cc-mode)

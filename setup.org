@@ -141,44 +141,37 @@
 
   Theme
   #+BEGIN_SRC emacs-lisp
-(powerline-center-theme)
-(load-theme 'gruvbox-dark-medium t)
+    (powerline-center-theme)
 
-;; Add highlight matching parenthesis
-(show-paren-mode 1)
+    (load-theme 'gruvbox-dark-soft t)
 
-(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)  
+    ;; Add highlight matching parenthesis
+    (show-paren-mode 1)
 
-;; auto highlighting
-(global-auto-highlight-symbol-mode t)
+    (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)  
+
+    ;; auto highlighting
+    (global-auto-highlight-symbol-mode t)
   #+END_SRC
   
-  Enable transparency if "is a i3 session"
-I still do not know if wmctrl is installed on my college computers.
-  #+BEGIN_SRC emacs-lisp
-(when (file-exists-p "~/.config/i3/config")
- (set-frame-parameter (selected-frame) 'alpha '(95 . 80))
- (add-to-list 'default-frame-alist '(alpha . (95 . 80))))
-  #+END_SRC
-
   GUI Setup
   #+BEGIN_SRC emacs-lisp
-;; Display, Troggle, enable...
-(define-global-minor-mode my-linum-mode linum-mode
-  (lambda ()
-    (when (not (memq major-mode
-                     (list 'term-mode 'shell-mode 'eshell-mode)))
-      (linum-mode t))))
+    ;; Display, Troggle, enable...
+    (define-global-minor-mode my-linum-mode linum-mode
+      (lambda ()
+        (when (not (memq major-mode
+                         (list 'term-mode 'shell-mode 'eshell-mode)))
+          (linum-mode t))))
 
-(my-linum-mode 1)
-(tool-bar-mode -1)
-(menu-bar-mode -1)
-(defvar linum-format "%d  ")
-(toggle-scroll-bar -1)
-;; End
+    (my-linum-mode 1)
+    (tool-bar-mode -1)
+    (menu-bar-mode -1)
+    (defvar linum-format "%d  ")
+    (toggle-scroll-bar -1)
+    ;; End
 
-;; Display columns
-(setq column-number-mode t)
+    ;; Display columns
+    (setq column-number-mode t)
   #+END_SRC
 
   Defaults
@@ -543,8 +536,8 @@ If N-NOT-DONE = 0, then done, else todo."
   
   Alarm
   #+BEGIN_SRC emacs-lisp
-(org-alert-enable)
-(setq alert-default-style 'libnotify)  
+;(org-alert-enable)
+;(setq alert-default-style 'libnotify)  
   #+END_SRC
 
 * Keybindings
