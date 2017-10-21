@@ -39,9 +39,9 @@
     (package-refresh-contents))  
   #+END_SRC
   
-  Proof General
+  Proof General (disabled)
   #+BEGIN_SRC emacs-lisp
-(load "~/.emacs.d/lisp/PG/generic/proof-site")
+; (load "~/.emacs.d/lisp/PG/generic/proof-site")
   #+END_SRC
 
 * Basic Setup
@@ -136,7 +136,7 @@
   
   #+BEGIN_SRC emacs-lisp
 (add-to-list 'default-frame-alist
-	     '(font . "xos4 Terminus 12"))  
+	     '(font . "xos4 Terminus-12"))
   #+END_SRC
 
   Theme
@@ -280,10 +280,6 @@ Otherwise, just insert the typed character."
 (add-hook 'c++-mode-hook (lambda () (defvar flycheck-clang-language-standard "c++14" "Set Clang standart to C++14"))) 
    #+END_SRC
    
-   Remove namespace identing
-   #+BEGIN_SRC emacs-lisp
-(c-set-offset 'innamespace 0)   
-   #+END_SRC
 * Utility functions
 
   Require
@@ -589,16 +585,20 @@ If N-NOT-DONE = 0, then done, else todo."
     ;; end
 
     ;;window navigation
-    (global-set-key (kbd "C-c <left>")
+    (global-set-key (kbd "C-c w j>")
                     (lambda () (interactive) (other-window -1)))
-    (global-set-key (kbd "C-c <right>")
+    (global-set-key (kbd "C-c w l")
                     (lambda () (interactive) (other-window +1)))
     ;;end
 
     ;; open shell
     (global-set-key (kbd "C-c i s") 'shell-other-window)
-    (global-set-key (kbd "C-c i e") 'eshell-other-window)  
+    (global-set-key (kbd "C-c i e") 'eshell-other-window)
+
   #+END_SRC
+
+  #+RESULTS:
+  : eshell-other-window
 
   Org
   #+BEGIN_SRC emacs-lisp

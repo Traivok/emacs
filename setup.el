@@ -1,13 +1,4 @@
 
-(let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
-                    (not (gnutls-available-p))))
-       (url (concat (if no-ssl "http" "https") "://melpa.org/packages/")))
-  (add-to-list 'package-archives (cons "melpa" url) t))
-(when (< emacs-major-version 24)
-  ;; For important compatibility libraries like cl-lib
-  (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
-(package-initialize) ;; You might already have this line
-
 (defvar my-package-list nil "All my packages list.")
 
 (setq my-package-list '(auto-highlight-symbol cmake-ide cmake-mode company-c-headers irony company-irony company-irony-c-headers
@@ -26,7 +17,7 @@
 (when (not package-archive-contents)
     (package-refresh-contents))
 
-(load "~/.emacs.d/lisp/PG/generic/proof-site")
+; (load "~/.emacs.d/lisp/PG/generic/proof-site")
 
 (require 'midnight)
 (require 'ido)
@@ -84,7 +75,7 @@
 (theme-cycle-add-theme-to-group 'theme-cycle-light-group 'gruvbox-light-hard)
 
 (add-to-list 'default-frame-alist
-             '(font . "xos4 Terminus 12"))
+             '(font . "xos4 Terminus-12"))
 
 (powerline-center-theme)
 
@@ -432,9 +423,9 @@ If N-NOT-DONE = 0, then done, else todo."
 ;; end
 
 ;;window navigation
-(global-set-key (kbd "C-c <left>")
+(global-set-key (kbd "C-c w j>")
                 (lambda () (interactive) (other-window -1)))
-(global-set-key (kbd "C-c <right>")
+(global-set-key (kbd "C-c w l")
                 (lambda () (interactive) (other-window +1)))
 ;;end
 
