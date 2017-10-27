@@ -54,6 +54,8 @@
 
 (ido-mode t)
 
+(add-to-list 'auto-mode-alist '("\\.tpp\\'" . c++-mode))
+
 (defun open-mpsyt (&optional wsearch)
   "Opens mpsyt in shell and search for &WSEARCH."
   (interactive)
