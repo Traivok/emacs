@@ -16,7 +16,7 @@
     ("~/Org/Rotina.org" "~/Org/index.org" "~/Org/IC.org" "~/Org/Estudo.org" "~/Org/Disciplinas.org")))
  '(package-selected-packages
    (quote
-    (multiple-cursors js2-refactor js2-mode fontawesome highlight-indent-guides nasm-mode monokai-theme rainbow-mode i3wm yasnippet theme-cycle smart-comment rainbow-delimiters powerline package-build org-bullets org-alert org-ac magit gruvbox-theme flycheck-rtags flycheck-package flycheck-irony company-rtags company-irony-c-headers company-irony company-c-headers cmake-mode cmake-ide brainfuck-mode auto-highlight-symbol 0blayout)))
+    (ag xref-js2 multiple-cursors js2-refactor js2-mode fontawesome highlight-indent-guides nasm-mode monokai-theme rainbow-mode i3wm yasnippet theme-cycle smart-comment rainbow-delimiters powerline package-build org-bullets org-alert org-ac magit gruvbox-theme flycheck-rtags flycheck-package flycheck-irony company-rtags company-irony-c-headers company-irony company-c-headers cmake-mode cmake-ide brainfuck-mode auto-highlight-symbol 0blayout)))
  '(safe-local-variable-values
    (quote
     ((eval org-disable-alert)

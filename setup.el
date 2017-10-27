@@ -13,7 +13,7 @@
 (setq my-package-list '(auto-highlight-symbol cmake-ide cmake-mode company-c-headers irony company-irony company-irony-c-headers
                                               rtags company-rtags flycheck-irony flycheck-rtags magit smart-comment yasnippet
                                               midnight ido org org-ac org-bullets gruvbox-theme powerline rainbow-delimiters
-                                              org-alert rainbow-mode))
+                                              org-alert rainbow-mode multiple-cursors js2-mode js2-refactor xref-js2 ag))
 
 (unless package-archive-contents (package-refresh-contents))
 
@@ -191,6 +191,14 @@ Otherwise, just insert the typed character."
 (setq irony-additional-clang-options '("-std=c++14" "-Wall" "-Wextra"))
 (add-hook 'c++-mode-hook (lambda () (defvar flycheck-gcc-language-standard "c++14" "Set GCC standart to C++14")))
 (add-hook 'c++-mode-hook (lambda () (defvar flycheck-clang-language-standard "c++14" "Set Clang standart to C++14")))
+
+(require 'js2-mode)
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+
+;; Better imenu
+(add-hook 'js2-mode-hook #'js2-imenu-extras-mode)
+
+
 
 (require 'magit)
 
@@ -437,6 +445,11 @@ If N-NOT-DONE = 0, then done, else todo."
 (global-set-key (kbd "C-c w l")
                 (lambda () (interactive) (other-window +1)))
 ;;end
+
+;; fowarding paragrah
+(global-set-key (kbd "M-n") 'forward-paragraph)
+(global-set-key (kbd "M-p") 'backward-paragraph)
+;; end
 
 ;; open shell
 (global-set-key (kbd "C-c i s") 'shell-other-window)
