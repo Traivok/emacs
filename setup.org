@@ -93,6 +93,11 @@
 
 (ido-mode t)
   #+END_SRC
+
+  Open template files as cpp mode
+#+BEGIN_SRC emacs-lisp
+(add-to-list 'auto-mode-alist '("\\.tpp\\'" . c++-mode))
+#+END_SRC
   
   Mpsyt and Cmus
   #+BEGIN_SRC emacs-lisp

@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: scope resolution
+# key: ::
+# --
+${1:namespace}::
+$0

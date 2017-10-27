@@ -1,4 +1,13 @@
 
+(let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
+                    (not (gnutls-available-p))))
+       (url (concat (if no-ssl "http" "https") "://melpa.org/packages/")))
+  (add-to-list 'package-archives (cons "melpa" url) t))
+(when (< emacs-major-version 24)
+  ;; For important compatibility libraries like cl-lib
+  (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
+(package-initialize) ;; You might already have this line
+
 (defvar my-package-list nil "All my packages list.")
 
 (setq my-package-list '(auto-highlight-symbol cmake-ide cmake-mode company-c-headers irony company-irony company-irony-c-headers
@@ -180,8 +189,6 @@ Otherwise, just insert the typed character."
 (setq irony-additional-clang-options '("-std=c++14" "-Wall" "-Wextra"))
 (add-hook 'c++-mode-hook (lambda () (defvar flycheck-gcc-language-standard "c++14" "Set GCC standart to C++14")))
 (add-hook 'c++-mode-hook (lambda () (defvar flycheck-clang-language-standard "c++14" "Set Clang standart to C++14")))
-
-(c-set-offset 'innamespace 0)
 
 (require 'magit)
 
