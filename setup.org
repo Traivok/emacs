@@ -632,6 +632,12 @@ If N-NOT-DONE = 0, then done, else todo."
     (global-set-key (kbd "C-c i s") 'shell-other-window)
     (global-set-key (kbd "C-c i e") 'eshell-other-window)
 
+    ;; web programming
+    (global-set-key (kbd "C-c m h") 'html-mode)
+    (global-set-key (kbd "C-c m j") 'javascript-mode)
+
+
+
   #+END_SRC
 
   #+RESULTS:
