@@ -22,7 +22,7 @@
 (setq my-package-list '(auto-highlight-symbol cmake-ide cmake-mode company-c-headers irony company-irony company-irony-c-headers
 					      rtags company-rtags flycheck-irony flycheck-rtags magit smart-comment yasnippet
 					      midnight ido org org-ac org-bullets gruvbox-theme powerline rainbow-delimiters
-					      org-alert rainbow-mode multiple-cursors js2-mode js2-refactor xref-js2 ag))
+					      org-alert rainbow-mode multiple-cursors js2-mode js2-refactor xref-js2 ag web-mode))
   #+END_SRC
   
   Update and install
@@ -49,7 +49,8 @@
   Require
   #+BEGIN_SRC emacs-lisp
 (require 'midnight)
-(require 'ido)  
+(require 'ido)
+(require 'web-mode)  
   #+END_SRC
   
   Personal info
@@ -94,11 +95,26 @@
 (ido-mode t)
   #+END_SRC
 
-  Open template files as cpp mode
+  Open template files as cpp
 #+BEGIN_SRC emacs-lisp
 (add-to-list 'auto-mode-alist '("\\.tpp\\'" . c++-mode))
 #+END_SRC
   
+  Set webdev mode
+#+BEGIN_SRC emacs-lisp
+  (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
+
+  (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.ejs\\'" . web-mode))
+
+#+END_SRC
+
   Mpsyt and Cmus
   #+BEGIN_SRC emacs-lisp
 (defun open-mpsyt (&optional wsearch)

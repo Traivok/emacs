@@ -13,7 +13,7 @@
 (setq my-package-list '(auto-highlight-symbol cmake-ide cmake-mode company-c-headers irony company-irony company-irony-c-headers
                                               rtags company-rtags flycheck-irony flycheck-rtags magit smart-comment yasnippet
                                               midnight ido org org-ac org-bullets gruvbox-theme powerline rainbow-delimiters
-                                              org-alert rainbow-mode multiple-cursors js2-mode js2-refactor xref-js2 ag))
+                                              org-alert rainbow-mode multiple-cursors js2-mode js2-refactor xref-js2 ag web-mode))
 
 (unless package-archive-contents (package-refresh-contents))
 
@@ -30,6 +30,7 @@
 
 (require 'midnight)
 (require 'ido)
+(require 'web-mode)
 
 (setq user-full-name "José Ricardo A. Figueirôa"
       user-mail-address "jraf@cin.ufpe.br")
@@ -55,6 +56,17 @@
 (ido-mode t)
 
 (add-to-list 'auto-mode-alist '("\\.tpp\\'" . c++-mode))
+
+(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
+
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.ejs\\'" . web-mode))
 
 (defun open-mpsyt (&optional wsearch)
   "Opens mpsyt in shell and search for &WSEARCH."
@@ -465,6 +477,10 @@ If N-NOT-DONE = 0, then done, else todo."
 ;; open shell
 (global-set-key (kbd "C-c i s") 'shell-other-window)
 (global-set-key (kbd "C-c i e") 'eshell-other-window)
+
+;; web programming
+(global-set-key (kbd "C-c m h") 'html-mode)
+(global-set-key (kbd "C-c m j") 'javascript-mode)
 
 (define-key org-mode-map (kbd "C-c C-x C-s") 'hrs/mark-done-and-archive) ;; archive completed tasks
 (define-key org-mode-map (kbd "C-d") 'worf-delete-subtree) ;; delete subtree and update it's parent
