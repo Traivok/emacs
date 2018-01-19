@@ -99,6 +99,11 @@
 #+BEGIN_SRC emacs-lisp
 (add-to-list 'auto-mode-alist '("\\.tpp\\'" . c++-mode))
 #+END_SRC
+
+  Rainbow mode in css
+#+BEGIN_SRC emacs-lisp
+  (add-to-list 'auto-mode-alist '("\\.css\\'" . rainbow-mode))
+#+END_SRC
   
   Set webdev mode
 #+BEGIN_SRC emacs-lisp
@@ -112,7 +117,6 @@
 
   (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.ejs\\'" . web-mode))
-
 #+END_SRC
 
   Mpsyt and Cmus
