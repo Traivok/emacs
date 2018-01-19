@@ -13,7 +13,8 @@
 (setq my-package-list '(auto-highlight-symbol cmake-ide cmake-mode company-c-headers irony company-irony company-irony-c-headers
                                               rtags company-rtags flycheck-irony flycheck-rtags magit smart-comment yasnippet
                                               midnight ido org org-ac org-bullets gruvbox-theme powerline rainbow-delimiters
-                                              org-alert rainbow-mode multiple-cursors js2-mode js2-refactor xref-js2 ag web-mode))
+                                              org-alert rainbow-mode multiple-cursors js2-mode js2-refactor xref-js2 ag web-mode
+                                              auto-minor-mode))
 
 (unless package-archive-contents (package-refresh-contents))
 
@@ -31,6 +32,7 @@
 (require 'midnight)
 (require 'ido)
 (require 'web-mode)
+(require 'auto-minor-mode)
 
 (setq user-full-name "José Ricardo A. Figueirôa"
       user-mail-address "jraf@cin.ufpe.br")
@@ -56,6 +58,8 @@
 (ido-mode t)
 
 (add-to-list 'auto-mode-alist '("\\.tpp\\'" . c++-mode))
+
+(add-to-list 'auto-minor-mode-alist '("\\.css\\'" . rainbow-mode))
 
 (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))

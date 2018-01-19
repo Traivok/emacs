@@ -17,17 +17,18 @@
   
   My package list
   #+BEGIN_SRC emacs-lisp
-(defvar my-package-list nil "All my packages list.")
+    (defvar my-package-list nil "All my packages list.")
 
-(setq my-package-list '(auto-highlight-symbol cmake-ide cmake-mode company-c-headers irony company-irony company-irony-c-headers
-					      rtags company-rtags flycheck-irony flycheck-rtags magit smart-comment yasnippet
-					      midnight ido org org-ac org-bullets gruvbox-theme powerline rainbow-delimiters
-					      org-alert rainbow-mode multiple-cursors js2-mode js2-refactor xref-js2 ag web-mode))
+    (setq my-package-list '(auto-highlight-symbol cmake-ide cmake-mode company-c-headers irony company-irony company-irony-c-headers
+                                                  rtags company-rtags flycheck-irony flycheck-rtags magit smart-comment yasnippet
+                                                  midnight ido org org-ac org-bullets gruvbox-theme powerline rainbow-delimiters
+                                                  org-alert rainbow-mode multiple-cursors js2-mode js2-refactor xref-js2 ag web-mode
+                                                  auto-minor-mode))
   #+END_SRC
   
   Update and install
   #+BEGIN_SRC emacs-lisp
-(unless package-archive-contents (package-refresh-contents))
+  (unless package-archive-contents (package-refresh-contents))
 
 ;; check if any package of my-package-list isn't installed and install it
 (dolist (my-package my-package-list)
@@ -50,7 +51,8 @@
   #+BEGIN_SRC emacs-lisp
 (require 'midnight)
 (require 'ido)
-(require 'web-mode)  
+(require 'web-mode)
+(require 'auto-minor-mode)
   #+END_SRC
   
   Personal info
@@ -102,7 +104,7 @@
 
   Rainbow mode in css
 #+BEGIN_SRC emacs-lisp
-  (add-to-list 'auto-mode-alist '("\\.css\\'" . rainbow-mode))
+  (add-to-list 'auto-minor-mode-alist '("\\.css\\'" . rainbow-mode))
 #+END_SRC
   
   Set webdev mode
@@ -652,11 +654,17 @@ If N-NOT-DONE = 0, then done, else todo."
     (global-set-key (kbd "C-c i s") 'shell-other-window)
     (global-set-key (kbd "C-c i e") 'eshell-other-window)
 
-    ;; web programming
-    (global-set-key (kbd "C-c m h") 'html-mode)
-    (global-set-key (kbd "C-c m j") 'javascript-mode)
+    ;; select all without losting cursor position
+    (global-set-key (kbd "C-c m a") (lambda () (interactive)
+                                      (point-to-register ?r
+                                                         '(file . (buffer-file-name (other-buffer)))
+                                                         )
+                                    (mark-whole-buffer)))
 
-
+    (global-set-key (kbd "C-c m r") (lambda () (interactive)
+                                    (jump-to-register ?r
+                                                         '(file . (buffer-file-name (other-buffer)))
+                                                         )))
 
   #+END_SRC
 
