@@ -316,6 +316,9 @@ Otherwise, just insert the typed character."
   (interactive)
   (find-file-existing "~/.emacs.d/setup.org"))
 
+(defun disable-fylcheck-in-org-src-block ()
+  (setq-local flycheck-disabled-checkers '(emacs-lisp-checkdoc)))
+
 (defun shell-other-window ()
   "Open a `shell' in a new window."
   (interactive)
@@ -482,9 +485,17 @@ If N-NOT-DONE = 0, then done, else todo."
 (global-set-key (kbd "C-c i s") 'shell-other-window)
 (global-set-key (kbd "C-c i e") 'eshell-other-window)
 
-;; web programming
-(global-set-key (kbd "C-c m h") 'html-mode)
-(global-set-key (kbd "C-c m j") 'javascript-mode)
+;; select all without losting cursor position
+(global-set-key (kbd "C-c m a") (lambda () (interactive)
+                                  (point-to-register ?r
+                                                     '(file . (buffer-file-name (other-buffer)))
+                                                     )
+                                (mark-whole-buffer)))
+
+(global-set-key (kbd "C-c m r") (lambda () (interactive)
+                                (jump-to-register ?r
+                                                     '(file . (buffer-file-name (other-buffer)))
+                                                     )))
 
 (define-key org-mode-map (kbd "C-c C-x C-s") 'hrs/mark-done-and-archive) ;; archive completed tasks
 (define-key org-mode-map (kbd "C-d") 'worf-delete-subtree) ;; delete subtree and update it's parent

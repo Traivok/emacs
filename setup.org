@@ -5,14 +5,14 @@
   
   Melpa  
   #+BEGIN_SRC emacs-lisp
-(let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
-                    (not (gnutls-available-p))))
-       (url (concat (if no-ssl "http" "https") "://melpa.org/packages/")))
-  (add-to-list 'package-archives (cons "melpa" url) t))
-(when (< emacs-major-version 24)
-  ;; For important compatibility libraries like cl-lib
-  (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
-(package-initialize) ;; You might already have this line
+    (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
+                        (not (gnutls-available-p))))
+           (url (concat (if no-ssl "http" "https") "://melpa.org/packages/")))
+      (add-to-list 'package-archives (cons "melpa" url) t))
+    (when (< emacs-major-version 24)
+      ;; For important compatibility libraries like cl-lib
+      (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
+    (package-initialize) ;; You might already have this line
   #+END_SRC
   
   My package list
@@ -44,7 +44,7 @@
   #+BEGIN_SRC emacs-lisp
 ; (load "~/.emacs.d/lisp/PG/generic/proof-site")
   #+END_SRC
-
+  
 * Basic Setup
   
   Require
@@ -65,13 +65,13 @@
   #+BEGIN_SRC emacs-lisp
     (setq explicit-shell-file-name "/bin/bash")
   #+END_SRC
-
+  
   Makes it so that when you start typing when a region is active,
   it gets replaced with your text.
   #+BEGIN_SRC emacs-lisp
 (delete-selection-mode t)  
   #+END_SRC
-
+  
   Change backup directory
   #+BEGIN_SRC emacs-lisp
 (setq backup-directory-alist `(("." . "/home/ricardo/Development/.backup")))
@@ -96,19 +96,19 @@
 
 (ido-mode t)
   #+END_SRC
-
+  
   Open template files as cpp
-#+BEGIN_SRC emacs-lisp
+  #+BEGIN_SRC emacs-lisp
 (add-to-list 'auto-mode-alist '("\\.tpp\\'" . c++-mode))
-#+END_SRC
-
+  #+END_SRC
+  
   Rainbow mode in css
-#+BEGIN_SRC emacs-lisp
+  #+BEGIN_SRC emacs-lisp
   (add-to-list 'auto-minor-mode-alist '("\\.css\\'" . rainbow-mode))
-#+END_SRC
+  #+END_SRC
   
   Set webdev mode
-#+BEGIN_SRC emacs-lisp
+  #+BEGIN_SRC emacs-lisp
   (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
@@ -119,8 +119,8 @@
 
   (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.ejs\\'" . web-mode))
-#+END_SRC
-
+  #+END_SRC
+  
   Mpsyt and Cmus
   #+BEGIN_SRC emacs-lisp
 (defun open-mpsyt (&optional wsearch)
@@ -226,6 +226,9 @@
     (require 'js2-refactor)
     (require 'xref-js2)
 #+END_SRC
+
+  #+RESULTS:
+  : xref-js2
 
   Company
   #+BEGIN_SRC emacs-lisp
@@ -442,6 +445,12 @@ Otherwise, just insert the typed character."
   (interactive)
   (find-file-existing "~/.emacs.d/setup.org"))
   #+END_SRC
+  
+  Disable checkdoc in source codes of org mode
+  #+BEGIN_SRC emacs-lisp
+    (defun disable-fylcheck-in-org-src-block ()
+      (setq-local flycheck-disabled-checkers '(emacs-lisp-checkdoc)))
+  #+END_SRC
 
   Open terminal in a new window
   #+BEGIN_SRC emacs-lisp
@@ -594,9 +603,9 @@ If N-NOT-DONE = 0, then done, else todo."
   
   Require
   #+BEGIN_SRC emacs-lisp
-(require 'org)
-(require 'cc-mode)
-(require 'magit)
+    (require 'org)
+    (require 'cc-mode)
+    (require 'magit)
   #+END_SRC
   
   Kbd
@@ -665,18 +674,22 @@ If N-NOT-DONE = 0, then done, else todo."
                                     (jump-to-register ?r
                                                          '(file . (buffer-file-name (other-buffer)))
                                                          )))
-
   #+END_SRC
-
-  #+RESULTS:
-  : eshell-other-window
-
+   
   Org
+  #+NAME: teste
   #+BEGIN_SRC emacs-lisp
-(define-key org-mode-map (kbd "C-c C-x C-s") 'hrs/mark-done-and-archive) ;; archive completed tasks
-(define-key org-mode-map (kbd "C-d") 'worf-delete-subtree) ;; delete subtree and update it's parent
-(define-key org-agenda-mode-map (kbd "C-c m") 'org-agenda-month-view)
+    (define-key org-mode-map (kbd "C-c C-x C-s") 'hrs/mark-done-and-archive) ;; archive completed tasks
+    (define-key org-mode-map (kbd "C-d") 'worf-delete-subtree) ;; delete subtree and update it's parent
+    (define-key org-agenda-mode-map (kbd "C-c m") 'org-agenda-month-view)
 
-(global-set-key "\C-cl" 'org-store-link)
-(global-set-key "\C-ca" 'org-agenda)
+    (global-set-key "\C-cl" 'org-store-link)
+    (global-set-key "\C-ca" 'org-agenda)
   #+END_SRC
+* Local Variables
+  # Local Variables:
+  # flycheck-disabled-checkers: emacs-lisp-checkdoc
+  # eval: (defun disable-fylcheck-in-org-src-block () (setq-local flycheck-disabled-checkers '(emacs-lisp-checkdoc)))
+  # eval: (add-hook 'org-src-mode-hook 'disable-fylcheck-in-org-src-block)
+  # eval: (global-keybindings (kbd "C-c r") 'revert-buffer)
+  # End:
