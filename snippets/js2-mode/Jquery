@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: Jquery
+# key: $
+# --
+\$\("${1:name}"\).${2:click}(${3: function (${4:}) \{
+    $0
+\}}\);
