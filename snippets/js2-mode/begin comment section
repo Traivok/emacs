@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: BeginCommentSection
+# key: bcs
+# --
+/*
+ * ${1:Name} Section
+ */

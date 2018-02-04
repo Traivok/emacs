@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: ContentSection
+# key: cs
+# --
+/*
+ * ${1:Contents}
+ ${2:* ${3:Variable} Section}
+ ${4:* ${4:Function} Section}
+ ${6:* ${5:Code} Section}
+ */
+    

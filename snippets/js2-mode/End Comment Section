@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: EndComentSection
+# key: ecs
+# --
+/*
+ * ${1:End of ${2:FOO}} Section
+ */
