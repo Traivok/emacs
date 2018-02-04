@@ -446,8 +446,8 @@ If N-NOT-DONE = 0, then done, else todo."
 ;; end
 
 ;; Goto setup files and folders
-(global-set-key (kbd "C-c i f") 'goto-init-file)
-(global-set-key (kbd "C-c i d") 'goto-setup-dir)
+(global-set-key (kbd "C-c o f") 'goto-init-file)
+(global-set-key (kbd "C-c o d") 'goto-setup-dir)
 ;; end
 
 ;; Magit
@@ -482,8 +482,8 @@ If N-NOT-DONE = 0, then done, else todo."
 ;; end
 
 ;; open shell
-(global-set-key (kbd "C-c i s") 'shell-other-window)
-(global-set-key (kbd "C-c i e") 'eshell-other-window)
+(global-set-key (kbd "C-c o s") 'shell-other-window)
+(global-set-key (kbd "C-c o e") 'eshell-other-window)
 
 ;; select all without losting cursor position
 (global-set-key (kbd "C-c m a") (lambda () (interactive)
@@ -496,6 +496,20 @@ If N-NOT-DONE = 0, then done, else todo."
                                 (jump-to-register ?r
                                                      '(file . (buffer-file-name (other-buffer)))
                                                      )))
+;; indent all
+(global-set-key (kbd "C-c i") (lambda () (interactive)
+                                ;; save cursor position
+                                (point-to-register ?r
+                                                   '(file . (buffer-file-name (other-buffer)))
+                                                   )
+
+                                (mark-whole-buffer)
+                                (indent-for-tab-command)                                
+                                
+                                ;; return to cursor position
+                                (jump-to-register ?r
+                                                  '(file . (buffer-file-name (other-buffer)))
+                                                  )))
 
 (define-key org-mode-map (kbd "C-c C-x C-s") 'hrs/mark-done-and-archive) ;; archive completed tasks
 (define-key org-mode-map (kbd "C-d") 'worf-delete-subtree) ;; delete subtree and update it's parent
