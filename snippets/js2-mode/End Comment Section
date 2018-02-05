@@ -2,6 +2,4 @@
 # name: EndComentSection
 # key: ecs
 # --
-/*
- * ${1:End of ${2:FOO}} Section
- */
+/* ${1:End of ${2:FOO}} Section */
