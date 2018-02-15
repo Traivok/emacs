@@ -3,9 +3,9 @@
 # key: cs
 # --
 // ================================================================
-// ${1:Contents}
-// ${2:Variable} Section
-// ${3:Function} Section
-// ${4:Event} Section
-// ${5:Code} Section
+//     ${1:Contents}
+//         ${2:1 - }${3:Variable} Section
+//         ${4:2 - }${5:Function} Section
+//         ${6:3 - }${7:Event} Section
+//         ${8:4 - }${9:Code} Section
 // ================================================================
