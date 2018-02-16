@@ -141,6 +141,15 @@
   (comint-send-input nil t))  
   #+END_SRC
   
+  Clear eshell
+  #+BEGIN_SRC emacs-lisp
+(defun eshell/clear ()
+  "Clear the eshell buffer."
+  (let ((inhibit-read-only t))
+    (erase-buffer)
+    (eshell-send-input)))  
+  #+END_SRC
+
 * Visual
   
   Require
