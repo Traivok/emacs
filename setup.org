@@ -141,7 +141,12 @@
   (comint-send-input nil t))  
   #+END_SRC
   
-  Clear eshell
+  Clipboard default
+  #+BEGIN_SRC emacs-lisp
+  (setq x-select-enable-clipboard t)
+  #+END_SRC
+
+  Clear Eshell
   #+BEGIN_SRC emacs-lisp
 (defun eshell/clear ()
   "Clear the eshell buffer."
