@@ -1,2 +1,0 @@
-
-(1 (theme-cycle . [(20170728 2133) ((emacs (24 3))) "Provides a switching theme enviroment." single ((:commit . "e9ea4278c9aace3d3bc0ec2aaab400ca4f3f02e8") (:keywords "faces") (:url . "https://github.com/Traivok/emacs-theme-cycle"))]))

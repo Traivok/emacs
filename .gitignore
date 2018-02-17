@@ -8,3 +8,6 @@ ido.last
 bookmarks
 eshell
 elpa
+./lisp/
+_config.yml
+ac-comphist.dat
