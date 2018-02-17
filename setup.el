@@ -89,6 +89,8 @@
   (insert "cmus")
   (comint-send-input nil t))
 
+(setq x-select-enable-clipboard t)
+
 (defun eshell/clear ()
   "Clear the eshell buffer."
   (let ((inhibit-read-only t))

@@ -23,7 +23,7 @@
                                                   rtags company-rtags flycheck-irony flycheck-rtags magit smart-comment yasnippet
                                                   midnight ido org org-ac org-bullets gruvbox-theme powerline rainbow-delimiters
                                                   org-alert rainbow-mode multiple-cursors js2-mode js2-refactor xref-js2 ag web-mode
-                                                  auto-minor-mode))
+                                                  auto-minor-mode markdown-mode flymd))
   #+END_SRC
   
   Update and install
