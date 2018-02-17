@@ -319,6 +319,20 @@ Otherwise, just insert the typed character."
           (set-visited-file-name new-name)
           (set-buffer-modified-p nil))))))
 
+;; source http://emacsredux.com/blog/2013/04/03/delete-file-and-buffer/
+(defun delete-file-and-buffer ()
+  "Kill the current buffer and deletes the file it is visiting."
+  (interactive)
+  (when (y-or-n-p (concat "Do you really want to delete " (buffer-file-name)))
+    (let ((filename (buffer-file-name)))
+      (when filename
+        (if (vc-backend filename)
+            (vc-delete-file filename)
+          (progn
+            (delete-file filename)
+            (message "Deleted file %s" filename)
+            (kill-buffer)))))))
+
 (defun goto-init-file ()
   "Go to init.el file."
   (interactive)
@@ -457,6 +471,10 @@ If N-NOT-DONE = 0, then done, else todo."
 (global-set-key (kbd "C-c o f") 'goto-init-file)
 (global-set-key (kbd "C-c o d") 'goto-setup-dir)
 ;; end
+
+;; Rename and Delete files
+(global-set-key (kbd "C-c R") 'rename-file-and-buffer)
+(global-set-key (kbd "C-c D") 'delete-file-and-buffer)
 
 ;; Magit
 (global-set-key (kbd "C-c s") 'magit-status)
