@@ -19,11 +19,13 @@
   #+BEGIN_SRC emacs-lisp
     (defvar my-package-list nil "All my packages list.")
 
-    (setq my-package-list '(auto-highlight-symbol cmake-ide cmake-mode company-c-headers irony company-irony company-irony-c-headers
-                                                  rtags company-rtags flycheck-irony flycheck-rtags magit smart-comment yasnippet
-                                                  midnight ido org org-ac org-bullets gruvbox-theme powerline rainbow-delimiters
-                                                  org-alert rainbow-mode multiple-cursors js2-mode js2-refactor xref-js2 ag web-mode
-                                                  auto-minor-mode markdown-mode flymd))
+    (setq my-package-list '(cmake-ide cmake-mode company-c-headers irony company-irony company-irony-c-headers ;; c
+                                      rtags company-rtags flycheck-irony flycheck-rtags ;; c
+                                      midnight org org-ac org-bullets org-alert ;; org
+                                      auto-minor-mode ido magit smart-comment yasnippet auto-highlight-symbol ;; utility
+                                      rainbow-mode multiple-cursors js2-mode js2-refactor xref-js2 ag web-mode ac-js2
+                                      markdown-mode flymd ;; markdown
+                                      gruvbox-theme powerline rainbow-delimiters)) ;; themes
   #+END_SRC
   
   Update and install
@@ -153,6 +155,12 @@
   (let ((inhibit-read-only t))
     (erase-buffer)
     (eshell-send-input)))  
+  #+END_SRC
+  
+  Fly md
+  #+BEGIN_SRC emacs-lisp
+    (setq flymd-output-directory "/home/ricardo/Development/.md-preview")
+    (setq flymd-close-buffer-delete-temp-files t)
   #+END_SRC
 
 * Visual
@@ -339,16 +347,20 @@ Otherwise, just insert the typed character."
    
    Refactoring tools and jump to symbol
    #+BEGIN_SRC emacs-lisp
-(add-hook 'js2-mode-hook #'js2-refactor-mode)
-(js2r-add-keybindings-with-prefix "C-c C-r")
-(define-key js2-mode-map (kbd "C-k") #'js2r-kill)
+     (add-hook 'js2-mode-hook #'js2-refactor-mode)
+     (js2r-add-keybindings-with-prefix "C-c C-r")
+     (define-key js2-mode-map (kbd "C-k") #'js2r-kill)
 
-;; js-mode (which js2 is based on) binds "M-." which conflicts with xref, so
-;; unbind it.
-(define-key js-mode-map (kbd "M-.") nil)
+     ;; js-mode (which js2 is based on) binds "M-." which conflicts with xref, so
+     ;; unbind it.
+     (define-key js-mode-map (kbd "M-.") nil)
 
-(add-hook 'js2-mode-hook (lambda ()
-  (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t)))   
+     (add-hook 'js2-mode-hook (lambda ()
+                                (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t)))
+
+     (add-hook 'js2-mode-hook 'ac-js2-mode) ;; autocompletion
+
+     (setq ac-js2-evaluate-calls t) ;; evaluate for candidates
    #+END_SRC
 
 * Utility functions
@@ -455,7 +467,7 @@ Otherwise, just insert the typed character."
     (defun delete-file-and-buffer ()
       "Kill the current buffer and deletes the file it is visiting."
       (interactive)
-      (when (y-or-n-p (concat "Do you really want to delete " (buffer-file-name)))
+      (when (yes-or-no-p (concat "Do you really want to delete " (buffer-file-name)))
         (let ((filename (buffer-file-name)))
           (when filename
             (if (vc-backend filename)

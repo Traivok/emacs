@@ -97,6 +97,9 @@
     (erase-buffer)
     (eshell-send-input)))
 
+(setq flymd-output-directory "/home/ricardo/Development/.md-preview")
+(setq flymd-close-buffer-delete-temp-files t)
+
 (require 'rainbow-delimiters)
 (require 'powerline)
 (require 'theme-cycle) ;; not melpa package
@@ -323,7 +326,7 @@ Otherwise, just insert the typed character."
 (defun delete-file-and-buffer ()
   "Kill the current buffer and deletes the file it is visiting."
   (interactive)
-  (when (y-or-n-p (concat "Do you really want to delete " (buffer-file-name)))
+  (when (yes-or-no-p (concat "Do you really want to delete " (buffer-file-name)))
     (let ((filename (buffer-file-name)))
       (when filename
         (if (vc-backend filename)
