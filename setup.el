@@ -10,11 +10,13 @@
 
 (defvar my-package-list nil "All my packages list.")
 
-(setq my-package-list '(auto-highlight-symbol cmake-ide cmake-mode company-c-headers irony company-irony company-irony-c-headers
-                                              rtags company-rtags flycheck-irony flycheck-rtags magit smart-comment yasnippet
-                                              midnight ido org org-ac org-bullets gruvbox-theme powerline rainbow-delimiters
-                                              org-alert rainbow-mode multiple-cursors js2-mode js2-refactor xref-js2 ag web-mode
-                                              auto-minor-mode markdown-mode flymd))
+(setq my-package-list '(cmake-ide cmake-mode company-c-headers irony company-irony company-irony-c-headers ;; c
+                                  rtags company-rtags flycheck-irony flycheck-rtags ;; c
+                                  midnight org org-ac org-bullets org-alert ;; org
+                                  auto-minor-mode ido magit smart-comment yasnippet auto-highlight-symbol ;; utility
+                                  rainbow-mode multiple-cursors js2-mode js2-refactor xref-js2 ag web-mode ac-js2
+                                  markdown-mode flymd ;; markdown
+                                  gruvbox-theme powerline rainbow-delimiters)) ;; themes
 
 (unless package-archive-contents (package-refresh-contents))
 
@@ -27,7 +29,7 @@
 (when (not package-archive-contents)
     (package-refresh-contents))
 
-; (load "~/.emacs.d/lisp/PG/generic/proof-site")
+(add-to-list 'load-path "~/.emacs.d/node-ac/")
 
 (require 'midnight)
 (require 'ido)
@@ -161,6 +163,7 @@
 (require 'js2-mode)
 (require 'js2-refactor)
 (require 'xref-js2)
+(require 'node-ac-mode)
 
 (add-hook 'after-init-hook 'global-company-mode)
 
@@ -236,7 +239,16 @@ Otherwise, just insert the typed character."
 (define-key js-mode-map (kbd "M-.") nil)
 
 (add-hook 'js2-mode-hook (lambda ()
-  (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t)))
+                           (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t)))
+
+(add-hook 'js2-mode-hook 'ac-js2-mode) ;; autocompletion
+(add-hook 'js2-mode-hook
+          (lambda ()
+                    (local-set-key (kbd "C-.") 'node-ac-auto-complete)
+                        (local-set-key (kbd "C-c C-d") 'node-ac-show-document)
+                        (local-set-key (kbd "C-c C-j") 'node-ac-jump-to-definition)))
+
+(setq ac-js2-evaluate-calls t) ;; evaluate for candidates
 
 (require 'magit)
 

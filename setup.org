@@ -42,9 +42,9 @@
     (package-refresh-contents))  
   #+END_SRC
   
-  Proof General (disabled)
+  Load paths
   #+BEGIN_SRC emacs-lisp
-; (load "~/.emacs.d/lisp/PG/generic/proof-site")
+    (add-to-list 'load-path "~/.emacs.d/node-ac/")
   #+END_SRC
   
 * Basic Setup
@@ -247,6 +247,7 @@
     (require 'js2-mode)
     (require 'js2-refactor)
     (require 'xref-js2)
+    (require 'node-ac-mode)
 #+END_SRC
 
   #+RESULTS:
@@ -359,6 +360,11 @@ Otherwise, just insert the typed character."
                                 (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t)))
 
      (add-hook 'js2-mode-hook 'ac-js2-mode) ;; autocompletion
+     (add-hook 'js2-mode-hook
+               (lambda ()
+                         (local-set-key (kbd "C-.") 'node-ac-auto-complete)
+                             (local-set-key (kbd "C-c C-d") 'node-ac-show-document)
+                             (local-set-key (kbd "C-c C-j") 'node-ac-jump-to-definition)))
 
      (setq ac-js2-evaluate-calls t) ;; evaluate for candidates
    #+END_SRC
