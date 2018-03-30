@@ -104,15 +104,7 @@
 
 (require 'rainbow-delimiters)
 (require 'powerline)
-(require 'theme-cycle) ;; not melpa package
 (require 'auto-highlight-symbol)
-
-(theme-cycle-add-theme-to-group 'theme-cycle-dark-group 'gruvbox-dark-soft)
-(theme-cycle-add-theme-to-group 'theme-cycle-dark-group 'gruvbox-dark-medium)
-(theme-cycle-add-theme-to-group 'theme-cycle-dark-group 'gruvbox-dark-hard)
-(theme-cycle-add-theme-to-group 'theme-cycle-light-group 'gruvbox-light-soft)
-(theme-cycle-add-theme-to-group 'theme-cycle-light-group 'gruvbox-light-medium)
-(theme-cycle-add-theme-to-group 'theme-cycle-light-group 'gruvbox-light-hard)
 
 (add-to-list 'default-frame-alist
              '(font . "xos4 Terminus-12"))
